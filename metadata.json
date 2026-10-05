@@ -1,0 +1,6 @@
+{
+  "name": "Teacher Theint English — Navbar & Header Consistency Suite",
+  "description": "Master Navbar and Header consistency correction across Teacher Theint English public, authentication, and student learning screens aligned with the approved Home Page navigation system.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
