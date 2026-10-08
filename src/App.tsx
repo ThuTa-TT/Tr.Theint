@@ -23,7 +23,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FCFAF9] text-[#2D2529]">
+    <div className="min-h-screen bg-[#fff8f8] text-[#22191b] font-['Nunito_Sans']">
       {/* Selected Public & Student Free Learning Screens */}
       {(currentScreen === 'PUB-01-HOME' ||
         currentScreen === 'PUB-02-COURSES' ||
@@ -70,12 +70,18 @@ export default function App() {
 
       {/* Selected Authenticated Teacher Portal Screen (9 Canonical Teacher Nav Items) */}
       {currentScreen === 'TEA-01-PORTAL' && (
-        <TeacherPortalScreen showSpecGuides={showSpecGuides} />
+        <TeacherPortalScreen
+          onNavigateScreen={handleNavigateScreen}
+          showSpecGuides={showSpecGuides}
+        />
       )}
 
       {/* Selected Authenticated Admin Console Screen (19 Canonical Admin Nav Items) */}
       {currentScreen === 'ADM-01-PORTAL' && (
-        <AdminPortalScreen showSpecGuides={showSpecGuides} />
+        <AdminPortalScreen
+          onNavigateScreen={handleNavigateScreen}
+          showSpecGuides={showSpecGuides}
+        />
       )}
 
       {/* Collapsible Bottom Screen Switcher & Navbar Consistency Audit Dock */}

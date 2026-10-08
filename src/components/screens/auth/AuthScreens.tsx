@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { LanguageCode, ScreenId } from '../../../types/navigation';
 import { PublicNavbar } from '../../navigation/PublicNavbar';
+import { BrandLogo, TR_THEINT_LOGO_URL } from '../../navigation/BrandLogo';
 
 interface AuthScreensProps {
   screenId: 'AUTH-01-LOGIN' | 'AUTH-02-REGISTER' | 'AUTH-03-VERIFY-EMAIL';
@@ -106,40 +107,40 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
     if (!val || val.length === 0) {
       return {
         level: 0,
-        label: 'Security level',
-        labelClass: 'font-body-sm text-body-sm text-tertiary ml-2 text-right',
-        bar1: 'bg-surface-container-high',
-        bar2: 'bg-surface-container-high',
-        bar3: 'bg-surface-container-high',
+        label: 'Security Level',
+        labelClass: 'text-xs text-[#534247] ml-2 text-right font-medium',
+        bar1: 'bg-[#f5e4e7]',
+        bar2: 'bg-[#f5e4e7]',
+        bar3: 'bg-[#f5e4e7]',
       };
     }
     if (val.length < 6) {
       return {
         level: 1,
         label: 'Weak',
-        labelClass: 'font-body-sm text-body-sm text-error ml-2 text-right',
-        bar1: 'bg-error',
-        bar2: 'bg-surface-container-high',
-        bar3: 'bg-surface-container-high',
+        labelClass: 'text-xs text-[#ba1a1a] font-bold ml-2 text-right',
+        bar1: 'bg-[#ba1a1a]',
+        bar2: 'bg-[#f5e4e7]',
+        bar3: 'bg-[#f5e4e7]',
       };
     }
     if (val.length < 9 || !/\d/.test(val)) {
       return {
         level: 2,
         label: 'Good',
-        labelClass: 'font-body-sm text-body-sm text-secondary ml-2 text-right',
-        bar1: 'bg-secondary-container',
-        bar2: 'bg-secondary-container',
-        bar3: 'bg-surface-container-high',
+        labelClass: 'text-xs text-[#006685] font-bold ml-2 text-right',
+        bar1: 'bg-[#81d4fa]',
+        bar2: 'bg-[#81d4fa]',
+        bar3: 'bg-[#f5e4e7]',
       };
     }
     return {
       level: 3,
       label: 'Institutional Grade',
-      labelClass: 'font-body-sm text-body-sm text-primary font-semibold ml-2 text-right',
-      bar1: 'bg-primary',
-      bar2: 'bg-primary',
-      bar3: 'bg-primary',
+      labelClass: 'text-xs text-[#1b5e20] font-bold ml-2 text-right',
+      bar1: 'bg-[#a5d6a7]',
+      bar2: 'bg-[#a5d6a7]',
+      bar3: 'bg-[#a5d6a7]',
     };
   };
 
@@ -242,9 +243,9 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
   };
 
   return (
-    <div className="bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col justify-between selection:bg-secondary-container selection:text-on-secondary-container">
-      <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-12 pt-8">
-        {/* Canonical Main Public Navbar */}
+    <div className="bg-[#fff8f8] font-['Nunito_Sans'] text-[#22191b] antialiased min-h-screen flex flex-col justify-between selection:bg-[#ffd9e2] selection:text-[#722544]">
+      {/* Top Card Navbar */}
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-12 pt-6 sm:pt-8">
         <PublicNavbar
           variant="card"
           activeNav={null}
@@ -260,25 +261,25 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
       {/* SCREEN 1: REGISTER (AUTH-02-REGISTER)                               */}
       {/* =================================================================== */}
       {screenId === 'AUTH-02-REGISTER' && (
-        <main className="w-full bg-background flex-grow flex items-center justify-center py-space-xl">
-          <div className="flex flex-col w-full items-center justify-center py-space-md px-margin-mobile sm:px-margin">
+        <main className="w-full bg-[#fff8f8] flex-grow flex items-center justify-center py-10 sm:py-16">
+          <div className="flex flex-col w-full items-center justify-center px-4 sm:px-6">
             <div className="w-full max-w-xl mx-auto flex flex-col items-center">
               {/* State Simulation Toolbar for Canonical QA */}
-              <div className="w-full mb-space-md bg-surface-container p-space-xs rounded-xl shadow-sm">
-                <div className="flex items-center justify-between px-space-xs mb-space-2xs">
-                  <div className="flex items-center gap-space-2xs">
-                    <span className="material-symbols-outlined text-[16px] text-primary">
+              <div className="w-full mb-6 bg-white/90 backdrop-blur-sm p-3.5 rounded-3xl border border-[#fbeaec] shadow-[0_4px_16px_rgba(244,143,177,0.08)]">
+                <div className="flex items-center justify-between px-2 mb-2">
+                  <div className="flex items-center gap-2">
+                    <span className="material-symbols-outlined text-[16px] text-[#f48fb1]">
                       science
                     </span>
-                    <span className="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">
+                    <span className="font-['Quicksand'] font-bold text-xs uppercase tracking-wider text-[#534247]">
                       Screen States QA Bar
                     </span>
                   </div>
-                  <span className="font-body-sm text-body-sm text-tertiary">
+                  <span className="font-['Quicksand'] font-semibold text-xs text-[#964261] bg-[#fff0f2] px-2.5 py-0.5 rounded-full border border-[#f5e4e7]">
                     AUTH-01 Canonical
                   </span>
                 </div>
-                <div className="grid grid-cols-3 sm:grid-cols-6 gap-space-2xs">
+                <div className="grid grid-cols-3 sm:grid-cols-6 gap-1.5 font-['Quicksand']">
                   {(
                     [
                       { key: 'default', label: 'Default' },
@@ -295,10 +296,10 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
                         key={item.key}
                         type="button"
                         onClick={() => applyRegisterQaState(item.key)}
-                        className={`py-1 px-2 rounded-lg font-label-sm text-label-sm text-center transition-all cursor-pointer ${
+                        className={`py-1.5 px-2 rounded-full text-xs font-bold text-center transition-all cursor-pointer ${
                           isActive
-                            ? 'bg-surface-container-lowest text-primary shadow-sm font-semibold'
-                            : 'text-on-surface-variant hover:bg-surface-container-lowest hover:text-on-surface'
+                            ? 'bg-[#f48fb1] text-white shadow-xs'
+                            : 'text-[#534247] hover:bg-[#fff0f2] hover:text-[#22191b]'
                         }`}
                       >
                         {item.label}
@@ -309,29 +310,30 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
               </div>
 
               {/* Registration Card */}
-              <div className="w-full bg-surface-container-lowest rounded-xl shadow-md p-space-md sm:p-space-xl relative overflow-hidden transition-all duration-300">
-                {/* Institutional Academic Header Badge */}
-                <div className="flex items-center justify-between mb-space-sm pb-space-xs border-b border-surface-container-high">
-                  <div className="flex items-center gap-space-xs">
-                    <span className="w-2 h-2 rounded-full bg-primary inline-block"></span>
-                    <span className="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">
-                      Student Portal Enrollment
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1 bg-surface-container-low px-2 py-0.5 rounded text-on-surface-variant font-label-sm text-label-sm">
-                    <span className="material-symbols-outlined text-[14px]">school</span>
-                    <span>Cohort 2024-25</span>
-                  </div>
-                </div>
+              <div className="w-full bg-white rounded-3xl border border-[#fbeaec] shadow-[0_8px_30px_rgba(244,143,177,0.12)] p-6 sm:p-10 relative overflow-hidden transition-all duration-300">
+                {/* Decorative Pastel Rainbow Ambient Glow */}
+                <div className="absolute -top-16 -right-16 w-44 h-44 rounded-full bg-[#81d4fa]/20 blur-3xl pointer-events-none" />
+                <div className="absolute -bottom-16 -left-16 w-44 h-44 rounded-full bg-[#f48fb1]/20 blur-3xl pointer-events-none" />
 
-                {/* Main Card Title */}
-                <div className="text-left mb-space-lg">
-                  <h1 className="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+                {/* Header with Teacher Theint Brand Avatar */}
+                <div className="flex flex-col items-center text-center mb-6 relative z-10">
+                  <div className="relative mb-3 group">
+                    <img
+                      src={TR_THEINT_LOGO_URL}
+                      alt="Teacher Theint English"
+                      className="w-16 h-16 rounded-full object-cover border-2 border-white shadow-[0_4px_12px_rgba(244,143,177,0.3)] ring-4 ring-[#f48fb1]/30"
+                    />
+                    <span className="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-[#a5d6a7] border-2 border-white shadow-2xs" title="Academy Active" />
+                  </div>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fff0f2] border border-[#f5e4e7] text-xs font-['Quicksand'] font-bold text-[#964261] mb-2 shadow-2xs">
+                    <span className="w-2 h-2 rounded-full bg-[#f48fb1]" />
+                    <span>Pastel Rainbow Academy Enrollment</span>
+                  </div>
+                  <h1 className="font-['Quicksand'] font-bold text-2xl sm:text-3xl text-[#22191b] tracking-tight">
                     Create your Student Account
                   </h1>
-                  <p className="font-body-md text-body-md text-on-surface-variant mt-1">
-                    Join Teacher Theint English to begin your personalized academic language
-                    journey.
+                  <p className="font-['Nunito_Sans'] text-sm text-[#534247] mt-1 max-w-md">
+                    Join Teacher Theint English to begin your personalized academic language journey.
                   </p>
                 </div>
 
@@ -339,27 +341,26 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
                 {regState === 'conflict_email' && (
                   <div
                     aria-live="assertive"
-                    className="mb-space-md p-space-sm rounded-lg bg-error-container text-on-error-container flex items-start gap-space-xs shadow-sm transition-all duration-300"
+                    className="mb-6 p-4 rounded-2xl bg-[#ffdad6]/70 border border-[#ba1a1a]/30 text-[#93000a] flex items-start gap-3 shadow-xs transition-all duration-300"
                     role="alert"
                   >
-                    <span className="material-symbols-outlined text-[20px] text-error flex-shrink-0 mt-0.5">
+                    <span className="material-symbols-outlined text-[20px] text-[#ba1a1a] shrink-0 mt-0.5">
                       error
                     </span>
-                    <div className="flex flex-col">
-                      <span className="font-label-lg text-label-lg font-bold">
+                    <div className="flex flex-col text-xs sm:text-sm">
+                      <span className="font-['Quicksand'] font-bold text-[#ba1a1a]">
                         Email Already Registered
                       </span>
-                      <p className="font-body-md text-body-md text-on-error-container mt-0.5">
-                        An account with this email address already exists in the student registry.
-                        Please{' '}
+                      <p className="text-[#93000a] mt-0.5">
+                        An account with this email already exists in the student registry. Please{' '}
                         <button
                           type="button"
                           onClick={() => onNavigateScreen('AUTH-01-LOGIN')}
-                          className="underline font-semibold hover:text-error transition-colors cursor-pointer"
+                          className="underline font-bold hover:text-[#ba1a1a] transition-colors cursor-pointer"
                         >
                           log in instead
                         </button>{' '}
-                        or reset your forgotten password.
+                        or reset your password.
                       </p>
                     </div>
                   </div>
@@ -369,25 +370,22 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
                 {regState === 'success' && (
                   <div
                     aria-live="polite"
-                    className="mb-space-md p-space-sm rounded-lg bg-surface-container-low text-on-surface shadow-sm transition-all duration-300"
+                    className="mb-6 p-4 rounded-2xl bg-[#e8f5e9] border border-[#a5d6a7] text-[#1b5e20] shadow-xs transition-all duration-300"
                     role="status"
                   >
-                    <div className="flex items-start gap-space-xs">
-                      <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="material-symbols-outlined text-[16px] text-on-primary">
-                          check
-                        </span>
+                    <div className="flex items-start gap-3">
+                      <div className="w-7 h-7 rounded-full bg-[#a5d6a7] text-[#1b5e20] flex items-center justify-center shrink-0 mt-0.5 shadow-2xs font-bold">
+                        <span className="material-symbols-outlined text-[18px]">check</span>
                       </div>
-                      <div className="flex flex-col w-full">
-                        <span className="font-label-lg text-label-lg font-bold text-primary">
-                          Account Created Successfully
+                      <div className="flex flex-col w-full text-xs sm:text-sm">
+                        <span className="font-['Quicksand'] font-bold text-[#1b5e20]">
+                          Account Created Successfully!
                         </span>
-                        <p className="font-body-md text-body-md text-on-surface-variant mt-0.5">
-                          Welcome to the Academy! Redirecting to email verification portal
-                          (student@theintenglish.edu)...
+                        <p className="text-[#2e7d32] mt-0.5">
+                          Welcome to the Academy! Redirecting to email verification portal (student@theintenglish.edu)...
                         </p>
-                        <div className="w-full bg-surface-container-high h-1.5 rounded-full mt-3 overflow-hidden">
-                          <div className="bg-primary h-full w-2/3 rounded-full animate-pulse"></div>
+                        <div className="w-full bg-[#c8e6c9] h-2 rounded-full mt-3 overflow-hidden">
+                          <div className="bg-[#43a047] h-full w-2/3 rounded-full animate-pulse" />
                         </div>
                       </div>
                     </div>
@@ -396,21 +394,21 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
 
                 {/* Registration Form */}
                 <form
-                  className="flex flex-col gap-space-md"
+                  className="flex flex-col gap-4 font-['Nunito_Sans']"
                   noValidate
                   onSubmit={handleRegisterSubmit}
                 >
                   {/* Field 1: Full Name */}
                   <div className="flex flex-col gap-1.5">
                     <label
-                      className="font-label-lg text-label-lg text-on-surface flex items-center justify-between"
+                      className="font-['Quicksand'] font-bold text-xs sm:text-sm text-[#22191b] flex items-center justify-between"
                       htmlFor="reg-fullname"
                     >
                       <span>
-                        Full Name <span className="text-error">*</span>
+                        Full Name <span className="text-[#ba1a1a]">*</span>
                       </span>
-                      <span className="font-body-sm text-body-sm text-tertiary">
-                        Official or Legal Name
+                      <span className="font-['Nunito_Sans'] text-xs text-[#534247] font-normal">
+                        Official Legal Name
                       </span>
                     </label>
                     <div className="relative">
@@ -420,24 +418,17 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
                         value={regFullname}
                         onChange={(e) => setRegFullname(e.target.value)}
                         placeholder="e.g., Maung Thein Htike"
-                        className={`w-full h-10 px-3.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder-outline border transition-all focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 ${
+                        className={`w-full h-11 px-4 rounded-2xl bg-[#fff8f8] text-[#22191b] text-sm placeholder:text-[#867277] border transition-all focus:bg-white focus:outline-none focus:border-[#f48fb1] focus:ring-2 focus:ring-[#f48fb1]/20 ${
                           regState === 'validation_errors'
-                            ? 'border-error ring-1 ring-error'
-                            : 'border-outline-variant'
+                            ? 'border-[#ba1a1a] ring-1 ring-[#ba1a1a]'
+                            : 'border-[#f5e4e7]'
                         }`}
                         required
                       />
                     </div>
-                    <span className="font-body-sm text-body-sm text-on-surface-variant">
-                      As it should appear on your institutional certificates.
-                    </span>
                     {regState === 'validation_errors' && (
-                      <span
-                        className="font-body-sm text-body-sm text-error flex items-center gap-1 mt-0.5"
-                        role="alert"
-                      >
-                        <span className="material-symbols-outlined text-[14px]">info</span> Please
-                        enter your legal full name.
+                      <span className="text-xs text-[#ba1a1a] flex items-center gap-1 font-semibold mt-0.5" role="alert">
+                        <span className="material-symbols-outlined text-[14px]">info</span> Please enter your legal full name.
                       </span>
                     )}
                   </div>
@@ -445,13 +436,13 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
                   {/* Field 2: Email Address */}
                   <div className="flex flex-col gap-1.5">
                     <label
-                      className="font-label-lg text-label-lg text-on-surface flex items-center justify-between"
+                      className="font-['Quicksand'] font-bold text-xs sm:text-sm text-[#22191b] flex items-center justify-between"
                       htmlFor="reg-email"
                     >
                       <span>
-                        Email Address <span className="text-error">*</span>
+                        Email Address <span className="text-[#ba1a1a]">*</span>
                       </span>
-                      <span className="font-body-sm text-body-sm text-tertiary">
+                      <span className="font-['Nunito_Sans'] text-xs text-[#534247] font-normal">
                         Student ID login
                       </span>
                     </label>
@@ -461,28 +452,21 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
                         type="email"
                         value={regEmail}
                         onChange={(e) => setRegEmail(e.target.value)}
-                        placeholder="student@example.com"
-                        className={`w-full h-10 px-3.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder-outline border transition-all focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 ${
+                        placeholder="student@theintenglish.edu"
+                        className={`w-full h-11 px-4 pr-10 rounded-2xl bg-[#fff8f8] text-[#22191b] text-sm placeholder:text-[#867277] border transition-all focus:bg-white focus:outline-none focus:border-[#f48fb1] focus:ring-2 focus:ring-[#f48fb1]/20 ${
                           regState === 'validation_errors' || regState === 'conflict_email'
-                            ? 'border-error ring-1 ring-error'
-                            : 'border-outline-variant'
+                            ? 'border-[#ba1a1a] ring-1 ring-[#ba1a1a]'
+                            : 'border-[#f5e4e7]'
                         }`}
                         required
                       />
-                      <span className="absolute right-3 top-2.5 material-symbols-outlined text-[18px] text-outline pointer-events-none">
+                      <span className="absolute right-3.5 top-3 material-symbols-outlined text-[18px] text-[#867277] pointer-events-none">
                         mail
                       </span>
                     </div>
-                    <span className="font-body-sm text-body-sm text-on-surface-variant">
-                      We will send your verification token and syllabus to this address.
-                    </span>
                     {regState === 'validation_errors' && (
-                      <span
-                        className="font-body-sm text-body-sm text-error flex items-center gap-1 mt-0.5"
-                        role="alert"
-                      >
-                        <span className="material-symbols-outlined text-[14px]">info</span> Please
-                        provide a valid institutional or personal email.
+                      <span className="text-xs text-[#ba1a1a] flex items-center gap-1 font-semibold mt-0.5" role="alert">
+                        <span className="material-symbols-outlined text-[14px]">info</span> Please provide a valid email.
                       </span>
                     )}
                   </div>
@@ -490,13 +474,13 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
                   {/* Field 3: Phone Number */}
                   <div className="flex flex-col gap-1.5">
                     <label
-                      className="font-label-lg text-label-lg text-on-surface flex items-center justify-between"
+                      className="font-['Quicksand'] font-bold text-xs sm:text-sm text-[#22191b] flex items-center justify-between"
                       htmlFor="reg-phone"
                     >
                       <span>
-                        Phone Number <span className="text-error">*</span>
+                        Phone Number <span className="text-[#ba1a1a]">*</span>
                       </span>
-                      <span className="font-body-sm text-body-sm text-tertiary">SMS alerts</span>
+                      <span className="font-['Nunito_Sans'] text-xs text-[#534247] font-normal">SMS alerts</span>
                     </label>
                     <div className="relative">
                       <input
@@ -505,27 +489,20 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
                         value={regPhone}
                         onChange={(e) => setRegPhone(e.target.value)}
                         placeholder="09xxxxxxxxx or international (+95)"
-                        className={`w-full h-10 px-3.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder-outline border transition-all focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 ${
+                        className={`w-full h-11 px-4 pr-10 rounded-2xl bg-[#fff8f8] text-[#22191b] text-sm placeholder:text-[#867277] border transition-all focus:bg-white focus:outline-none focus:border-[#f48fb1] focus:ring-2 focus:ring-[#f48fb1]/20 ${
                           regState === 'validation_errors'
-                            ? 'border-error ring-1 ring-error'
-                            : 'border-outline-variant'
+                            ? 'border-[#ba1a1a] ring-1 ring-[#ba1a1a]'
+                            : 'border-[#f5e4e7]'
                         }`}
                         required
                       />
-                      <span className="absolute right-3 top-2.5 material-symbols-outlined text-[18px] text-outline pointer-events-none">
+                      <span className="absolute right-3.5 top-3 material-symbols-outlined text-[18px] text-[#867277] pointer-events-none">
                         phone
                       </span>
                     </div>
-                    <span className="font-body-sm text-body-sm text-on-surface-variant">
-                      Used for direct student notifications and security.
-                    </span>
                     {regState === 'validation_errors' && (
-                      <span
-                        className="font-body-sm text-body-sm text-error flex items-center gap-1 mt-0.5"
-                        role="alert"
-                      >
-                        <span className="material-symbols-outlined text-[14px]">info</span> A
-                        contact phone number is required for cohort enrollment.
+                      <span className="text-xs text-[#ba1a1a] flex items-center gap-1 font-semibold mt-0.5" role="alert">
+                        <span className="material-symbols-outlined text-[14px]">info</span> Phone number is required for cohort enrollment.
                       </span>
                     )}
                   </div>
@@ -533,13 +510,13 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
                   {/* Field 4: Password with Eye Toggle */}
                   <div className="flex flex-col gap-1.5">
                     <label
-                      className="font-label-lg text-label-lg text-on-surface flex items-center justify-between"
+                      className="font-['Quicksand'] font-bold text-xs sm:text-sm text-[#22191b] flex items-center justify-between"
                       htmlFor="reg-password"
                     >
                       <span>
-                        Create Password <span className="text-error">*</span>
+                        Create Password <span className="text-[#ba1a1a]">*</span>
                       </span>
-                      <span className="font-body-sm text-body-sm text-tertiary">
+                      <span className="font-['Nunito_Sans'] text-xs text-[#534247] font-normal">
                         Min. 8 characters
                       </span>
                     </label>
@@ -550,10 +527,10 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
                         value={regPassword}
                         onChange={(e) => setRegPassword(e.target.value)}
                         placeholder="••••••••••••"
-                        className={`w-full h-10 pl-3.5 pr-10 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder-outline border transition-all focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 ${
+                        className={`w-full h-11 pl-4 pr-10 rounded-2xl bg-[#fff8f8] text-[#22191b] text-sm placeholder:text-[#867277] border transition-all focus:bg-white focus:outline-none focus:border-[#f48fb1] focus:ring-2 focus:ring-[#f48fb1]/20 ${
                           regState === 'validation_errors'
-                            ? 'border-error ring-1 ring-error'
-                            : 'border-outline-variant'
+                            ? 'border-[#ba1a1a] ring-1 ring-[#ba1a1a]'
+                            : 'border-[#f5e4e7]'
                         }`}
                         required
                       />
@@ -561,7 +538,7 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
                         aria-label="Toggle password visibility"
                         type="button"
                         onClick={() => setShowRegPwd((prev) => !prev)}
-                        className="absolute right-2.5 top-2 text-on-surface-variant hover:text-primary p-1 focus:outline-none cursor-pointer"
+                        className="absolute right-2.5 top-2.5 text-[#534247] hover:text-[#f48fb1] p-1 focus:outline-none cursor-pointer"
                       >
                         <span className="material-symbols-outlined text-[18px]">
                           {showRegPwd ? 'visibility_off' : 'visibility'}
@@ -570,46 +547,25 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
                     </div>
                     {/* Password Strength Indicator */}
                     <div className="flex items-center gap-1.5 mt-1">
-                      <div
-                        className={`h-1 flex-1 rounded-full transition-colors ${pwdStrength.bar1}`}
-                      ></div>
-                      <div
-                        className={`h-1 flex-1 rounded-full transition-colors ${pwdStrength.bar2}`}
-                      ></div>
-                      <div
-                        className={`h-1 flex-1 rounded-full transition-colors ${pwdStrength.bar3}`}
-                      ></div>
+                      <div className={`h-1.5 flex-1 rounded-full transition-colors ${pwdStrength.bar1}`} />
+                      <div className={`h-1.5 flex-1 rounded-full transition-colors ${pwdStrength.bar2}`} />
+                      <div className={`h-1.5 flex-1 rounded-full transition-colors ${pwdStrength.bar3}`} />
                       <span className={pwdStrength.labelClass}>{pwdStrength.label}</span>
                     </div>
-                    <span className="font-body-sm text-body-sm text-on-surface-variant">
-                      Must contain at least 8 characters.
-                    </span>
-                    {regState === 'validation_errors' && (
-                      <span
-                        className="font-body-sm text-body-sm text-error flex items-center gap-1 mt-0.5"
-                        role="alert"
-                      >
-                        <span className="material-symbols-outlined text-[14px]">info</span>{' '}
-                        Password must satisfy length and character complexity rules.
-                      </span>
-                    )}
                   </div>
 
-                  {/* Field 5: Password Confirmation */}
+                  {/* Field 5: Confirm Password */}
                   <div className="flex flex-col gap-1.5">
                     <label
-                      className="font-label-lg text-label-lg text-on-surface flex items-center justify-between"
+                      className="font-['Quicksand'] font-bold text-xs sm:text-sm text-[#22191b] flex items-center justify-between"
                       htmlFor="reg-confirm-password"
                     >
                       <span>
-                        Confirm Password <span className="text-error">*</span>
+                        Confirm Password <span className="text-[#ba1a1a]">*</span>
                       </span>
                       {passwordsMatch && (
-                        <span className="font-body-sm text-body-sm text-primary flex items-center gap-0.5">
-                          <span className="material-symbols-outlined text-[14px]">
-                            check_circle
-                          </span>{' '}
-                          Passwords match
+                        <span className="text-xs text-[#1b5e20] font-bold flex items-center gap-0.5">
+                          <span className="material-symbols-outlined text-[14px]">check_circle</span> Passwords match
                         </span>
                       )}
                     </label>
@@ -620,10 +576,10 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
                         value={regConfirmPassword}
                         onChange={(e) => setRegConfirmPassword(e.target.value)}
                         placeholder="••••••••••••"
-                        className={`w-full h-10 pl-3.5 pr-10 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder-outline border transition-all focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 ${
+                        className={`w-full h-11 pl-4 pr-10 rounded-2xl bg-[#fff8f8] text-[#22191b] text-sm placeholder:text-[#867277] border transition-all focus:bg-white focus:outline-none focus:border-[#f48fb1] focus:ring-2 focus:ring-[#f48fb1]/20 ${
                           regState === 'validation_errors'
-                            ? 'border-error ring-1 ring-error'
-                            : 'border-outline-variant'
+                            ? 'border-[#ba1a1a] ring-1 ring-[#ba1a1a]'
+                            : 'border-[#f5e4e7]'
                         }`}
                         required
                       />
@@ -631,100 +587,75 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
                         aria-label="Toggle confirm password visibility"
                         type="button"
                         onClick={() => setShowRegConfirmPwd((prev) => !prev)}
-                        className="absolute right-2.5 top-2 text-on-surface-variant hover:text-primary p-1 focus:outline-none cursor-pointer"
+                        className="absolute right-2.5 top-2.5 text-[#534247] hover:text-[#f48fb1] p-1 focus:outline-none cursor-pointer"
                       >
                         <span className="material-symbols-outlined text-[18px]">
                           {showRegConfirmPwd ? 'visibility_off' : 'visibility'}
                         </span>
                       </button>
                     </div>
-                    {regState === 'validation_errors' && (
-                      <span
-                        className="font-body-sm text-body-sm text-error flex items-center gap-1 mt-0.5"
-                        role="alert"
-                      >
-                        <span className="material-symbols-outlined text-[14px]">info</span>{' '}
-                        Passwords do not match.
+                    {regState === 'validation_errors' && !passwordsMatch && (
+                      <span className="text-xs text-[#ba1a1a] flex items-center gap-1 font-semibold mt-0.5" role="alert">
+                        <span className="material-symbols-outlined text-[14px]">info</span> Passwords do not match.
                       </span>
                     )}
                   </div>
 
-                  {/* Role Lock System Banner */}
-                  <div className="p-space-xs rounded-lg bg-surface-container-low flex items-center gap-space-xs text-on-surface-variant">
-                    <span className="material-symbols-outlined text-[18px] text-secondary flex-shrink-0">
-                      verified_user
-                    </span>
-                    <p className="font-body-sm text-body-sm">
-                      Public registration creates an unverified{' '}
-                      <strong className="text-on-surface font-semibold">Student Account</strong>.
-                      Instructor and Administrator roles are assigned strictly through invitation
-                      credentials.
-                    </p>
-                  </div>
-
                   {/* Terms and Privacy Checkbox */}
-                  <div className="flex flex-col gap-1 mt-space-2xs">
-                    <label className="flex items-start gap-space-xs cursor-pointer select-none">
+                  <div className="flex flex-col gap-1 mt-1">
+                    <label className="flex items-start gap-2.5 cursor-pointer select-none">
                       <input
                         type="checkbox"
                         checked={regTerms}
                         onChange={(e) => setRegTerms(e.target.checked)}
-                        className="mt-1 w-4 h-4 rounded text-primary focus:ring-primary/30 border-outline-variant focus:ring-offset-0 cursor-pointer"
+                        className="mt-1 w-4 h-4 rounded text-[#f48fb1] focus:ring-[#f48fb1]/30 border-[#d8c1c6] cursor-pointer"
                         required
                       />
-                      <span className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                      <span className="text-xs sm:text-sm text-[#534247] leading-relaxed">
                         I agree to the{' '}
-                        <span className="text-primary underline hover:text-secondary font-medium">
+                        <span className="text-[#964261] underline font-bold hover:text-[#f48fb1]">
                           Academic Terms of Service
                         </span>{' '}
                         and acknowledge the{' '}
-                        <span className="text-primary underline hover:text-secondary font-medium">
-                          Institutional Student Privacy Policy
-                        </span>
-                        .
+                        <span className="text-[#964261] underline font-bold hover:text-[#f48fb1]">
+                          Student Privacy Policy
+                        </span>.
                       </span>
                     </label>
-                    {regState === 'validation_errors' && (
-                      <span
-                        className="font-body-sm text-body-sm text-error flex items-center gap-1 mt-0.5"
-                        role="alert"
-                      >
-                        <span className="material-symbols-outlined text-[14px]">info</span> You must
-                        accept the academic guidelines to proceed.
-                      </span>
-                    )}
                   </div>
 
-                  {/* Primary Action CTA */}
-                  <div className="mt-space-xs flex flex-col gap-space-sm">
+                  {/* Primary Action CTA — Tactile Bubblegum Pink Button */}
+                  <div className="mt-3">
                     <button
                       type="submit"
                       disabled={regState === 'submitting'}
-                      className="w-full h-11 rounded-lg bg-primary hover:bg-on-primary-fixed-variant active:bg-on-primary-fixed text-on-primary font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
+                      className="w-full h-12 rounded-full bg-[#f48fb1] hover:bg-[#f07fa6] text-white font-['Quicksand'] font-bold text-sm sm:text-base shadow-[0_4px_0_#d87395] active:translate-y-[3px] active:shadow-[0_1px_0_#d87395] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
                     >
                       <span>
                         {regState === 'submitting'
-                          ? 'Verifying Credentials...'
+                          ? 'Creating Account...'
                           : 'Create Student Account'}
                       </span>
-                      {regState === 'submitting' && (
+                      {regState === 'submitting' ? (
                         <span className="animate-spin material-symbols-outlined text-[20px]">
                           progress_activity
                         </span>
+                      ) : (
+                        <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                       )}
                     </button>
                   </div>
                 </form>
 
                 {/* Institutional Sign In Cross Link */}
-                <div className="mt-space-lg pt-space-md border-t border-surface-container-high flex flex-col sm:flex-row items-center justify-between gap-space-xs text-center sm:text-left">
-                  <span className="font-body-md text-body-md text-on-surface-variant">
+                <div className="mt-6 pt-5 border-t border-[#f5e4e7] flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+                  <span className="text-xs sm:text-sm text-[#534247]">
                     Already enrolled with an account?
                   </span>
                   <button
                     type="button"
                     onClick={() => onNavigateScreen('AUTH-01-LOGIN')}
-                    className="font-label-lg text-label-lg text-primary hover:text-secondary font-semibold transition-colors flex items-center gap-1 focus:outline-none cursor-pointer"
+                    className="font-['Quicksand'] font-bold text-sm text-[#964261] hover:text-[#f48fb1] transition-colors flex items-center gap-1 cursor-pointer"
                   >
                     <span>Sign In</span>
                     <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
@@ -733,10 +664,10 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
               </div>
 
               {/* Security & Institutional Assurance Footnote */}
-              <div className="mt-space-md text-center max-w-sm">
-                <p className="font-body-sm text-body-sm text-tertiary flex items-center justify-center gap-1.5">
-                  <span className="material-symbols-outlined text-[16px]">lock</span>
-                  256-bit SSL encrypted institutional registry
+              <div className="mt-5 text-center">
+                <p className="text-xs text-[#534247] flex items-center justify-center gap-1.5 font-medium">
+                  <span className="material-symbols-outlined text-[16px] text-[#f48fb1]">lock</span>
+                  256-bit SSL encrypted institutional student registry
                 </p>
               </div>
             </div>
@@ -748,21 +679,21 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
       {/* SCREEN 2: EMAIL VERIFICATION (AUTH-03-VERIFY-EMAIL)                 */}
       {/* =================================================================== */}
       {screenId === 'AUTH-03-VERIFY-EMAIL' && (
-        <main className="w-full bg-background flex-grow flex items-center justify-center py-space-xl">
-          <div className="flex flex-col w-full items-center justify-center py-space-md px-margin-mobile sm:px-margin">
-            <div className="w-full max-w-xl flex flex-col gap-space-lg relative">
+        <main className="w-full bg-[#fff8f8] flex-grow flex items-center justify-center py-10 sm:py-16">
+          <div className="flex flex-col w-full items-center justify-center px-4 sm:px-6">
+            <div className="w-full max-w-xl flex flex-col gap-6 relative">
               {/* State Simulation Control Bar */}
-              <div className="w-full bg-surface-container-low rounded-xl p-space-xs shadow-sm flex flex-col gap-space-2xs">
-                <div className="flex items-center justify-between px-space-xs pt-1">
-                  <span className="font-label-sm text-label-sm text-tertiary uppercase tracking-wider flex items-center gap-1">
-                    <span className="material-symbols-outlined text-[14px]">tune</span> Lifecycle
-                    State Simulator
+              <div className="w-full bg-white/90 backdrop-blur-sm rounded-3xl p-3.5 border border-[#fbeaec] shadow-[0_4px_16px_rgba(244,143,177,0.08)] flex flex-col gap-2">
+                <div className="flex items-center justify-between px-2">
+                  <span className="font-['Quicksand'] font-bold text-xs text-[#534247] uppercase tracking-wider flex items-center gap-1.5">
+                    <span className="material-symbols-outlined text-[16px] text-[#f48fb1]">tune</span>
+                    Lifecycle State Simulator
                   </span>
-                  <span className="font-label-sm text-label-sm text-primary bg-primary-fixed px-2 py-0.5 rounded-full font-bold">
+                  <span className="font-['Quicksand'] font-bold text-xs text-[#964261] bg-[#fff0f2] px-2.5 py-0.5 rounded-full border border-[#f5e4e7]">
                     AUTH-02 Guard
                   </span>
                 </div>
-                <div className="grid grid-cols-5 gap-1 bg-surface-container-lowest p-1 rounded-lg">
+                <div className="grid grid-cols-5 gap-1.5 font-['Quicksand']">
                   {(
                     [
                       { key: 'waiting', label: '1. Waiting' },
@@ -778,10 +709,10 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
                         key={tab.key}
                         type="button"
                         onClick={() => switchVerifyState(tab.key)}
-                        className={`py-1.5 px-1 rounded font-label-md text-label-md transition-all text-center truncate cursor-pointer ${
+                        className={`py-1.5 px-2 rounded-full text-xs font-bold transition-all text-center truncate cursor-pointer ${
                           isActive
-                            ? 'bg-primary text-on-primary shadow-sm'
-                            : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high'
+                            ? 'bg-[#f48fb1] text-white shadow-xs'
+                            : 'text-[#534247] hover:bg-[#fff0f2] hover:text-[#22191b]'
                         }`}
                       >
                         {tab.label}
@@ -792,68 +723,65 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
               </div>
 
               {/* Main Card Container */}
-              <div className="w-full bg-surface-container-lowest rounded-xl shadow-md p-space-lg sm:p-space-xl flex flex-col relative overflow-hidden">
-                {/* Institutional Top Accent Bar */}
-                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary via-primary-container to-secondary"></div>
+              <div className="w-full bg-white rounded-3xl border border-[#fbeaec] shadow-[0_8px_30px_rgba(244,143,177,0.12)] p-6 sm:p-10 flex flex-col relative overflow-hidden text-center">
+                {/* Decorative Pastel Ambient */}
+                <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-[#ffe082]/30 blur-2xl pointer-events-none" />
 
                 {/* State 1: WAITING */}
                 {verifyState === 'waiting' && (
-                  <div className="flex flex-col items-center text-center">
-                    <div className="relative w-20 h-20 mb-space-md flex items-center justify-center">
-                      <div className="absolute inset-0 rounded-full bg-primary-fixed opacity-70 blur-md"></div>
-                      <div className="relative w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center shadow-sm">
-                        <span className="material-symbols-outlined text-primary text-[36px]">
+                  <div className="flex flex-col items-center">
+                    <div className="relative w-20 h-20 mb-4 flex items-center justify-center">
+                      <div className="absolute inset-0 rounded-full bg-[#f48fb1]/20 blur-md" />
+                      <div className="relative w-16 h-16 rounded-full bg-[#fff0f2] border-2 border-[#f48fb1] text-[#964261] flex items-center justify-center shadow-xs">
+                        <span className="material-symbols-outlined text-[32px] text-[#f48fb1]">
                           mark_email_unread
                         </span>
                       </div>
-                      <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-[12px] shadow-sm">
-                        <span className="material-symbols-outlined text-[14px]">lock</span>
+                      <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-[#81d4fa] text-[#22191b] flex items-center justify-center text-[12px] shadow-2xs font-bold border-2 border-white">
+                        <span className="material-symbols-outlined text-[13px]">lock</span>
                       </span>
                     </div>
-                    <div className="inline-flex items-center gap-1.5 px-space-xs py-0.5 rounded-full bg-surface-container text-secondary mb-space-xs font-label-sm text-label-sm font-semibold">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fff0f2] text-[#964261] mb-3 text-xs font-['Quicksand'] font-bold border border-[#f5e4e7]">
                       <span>Student Route Guarded</span>
                       <span>•</span>
-                      <span>Unverified</span>
+                      <span>Pending Verification</span>
                     </div>
-                    <h1 className="font-headline-lg text-headline-lg text-on-surface mb-space-xs">
+                    <h1 className="font-['Quicksand'] font-bold text-2xl sm:text-3xl text-[#22191b] mb-2">
                       Verify your email address
                     </h1>
-                    <p className="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mb-space-md">
+                    <p className="text-sm text-[#534247] max-w-md mx-auto mb-6">
                       We’ve sent a verification link to your registered email address{' '}
-                      <span className="font-semibold text-on-surface bg-surface-container-low px-1.5 py-0.5 rounded">
-                        j***@example.com
+                      <span className="font-bold text-[#22191b] bg-[#fff0f2] px-2 py-0.5 rounded-full border border-[#f5e4e7]">
+                        student@theintenglish.edu
                       </span>
-                      . Please check your inbox and click the link to activate your Student
-                      account.
+                      . Please click the link to activate your student account.
                     </p>
-                    <div className="w-full bg-surface-container-low rounded-lg p-space-sm text-left mb-space-lg flex items-start gap-space-xs">
-                      <span className="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5">
+                    <div className="w-full bg-[#fff8f8] rounded-2xl p-4 text-left mb-6 border border-[#f5e4e7] flex items-start gap-3">
+                      <span className="material-symbols-outlined text-[#ffe082] text-[22px] shrink-0 mt-0.5 bg-[#22191b] rounded-full p-0.5">
                         info
                       </span>
-                      <div className="flex flex-col gap-0.5 text-left">
-                        <span className="font-label-md text-label-md text-on-surface">
-                          Didn&apos;t receive the email?
+                      <div className="flex flex-col text-xs sm:text-sm">
+                        <span className="font-['Quicksand'] font-bold text-[#22191b]">
+                          Didn’t receive the email?
                         </span>
-                        <span className="font-body-sm text-body-sm text-on-surface-variant">
-                          Check your spam folder or request a new activation link below.
+                        <span className="text-[#534247] mt-0.5">
+                          Check your spam folder or request a fresh activation link below.
                         </span>
                       </div>
                     </div>
-                    <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-space-sm">
+                    <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-3">
                       <button
                         type="button"
                         onClick={triggerResendAction}
-                        className="w-full sm:w-auto px-space-md py-2.5 rounded-lg bg-surface-container text-on-surface font-label-lg text-label-lg hover:bg-surface-variant transition-colors flex items-center justify-center gap-space-2xs shadow-sm cursor-pointer"
+                        className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#f48fb1] hover:bg-[#f07fa6] text-white font-['Quicksand'] font-bold text-xs sm:text-sm shadow-[0_4px_0_#d87395] active:translate-y-[3px] active:shadow-[0_1px_0_#d87395] transition-all flex items-center justify-center gap-2 cursor-pointer"
                       >
-                        <span className="material-symbols-outlined text-[18px]">
-                          forward_to_inbox
-                        </span>
+                        <span className="material-symbols-outlined text-[18px]">forward_to_inbox</span>
                         <span>Resend Verification Email</span>
                       </button>
                       <button
                         type="button"
                         onClick={() => onNavigateScreen('AUTH-01-LOGIN')}
-                        className="w-full sm:w-auto px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors text-center cursor-pointer"
+                        className="w-full sm:w-auto px-5 py-3 rounded-full font-['Quicksand'] font-bold text-xs sm:text-sm text-[#534247] hover:text-[#964261] bg-[#fff0f2] hover:bg-[#ffe4e9] border border-[#f5e4e7] transition-colors cursor-pointer"
                       >
                         Back to Login
                       </button>
@@ -863,62 +791,57 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
 
                 {/* State 2: RESEND */}
                 {verifyState === 'resend' && (
-                  <div className="flex flex-col items-center text-center">
+                  <div className="flex flex-col items-center">
                     {resendSpinner ? (
-                      <div className="flex flex-col items-center my-space-md">
-                        <div className="w-14 h-14 rounded-full border-4 border-surface-variant border-t-primary animate-spin mb-space-sm"></div>
-                        <p className="font-label-lg text-label-lg text-on-surface">
+                      <div className="flex flex-col items-center my-8">
+                        <div className="w-14 h-14 rounded-full border-4 border-[#fff0f2] border-t-[#f48fb1] animate-spin mb-4" />
+                        <p className="font-['Quicksand'] font-bold text-base text-[#22191b]">
                           Generating secure dispatch token...
                         </p>
-                        <p className="font-body-sm text-body-sm text-on-surface-variant">
+                        <p className="text-xs text-[#534247] mt-1">
                           Communicating with institutional mail gateway
                         </p>
                       </div>
                     ) : (
                       <div className="flex-col items-center w-full flex">
-                        <div className="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-space-md shadow-sm">
-                          <span className="material-symbols-outlined text-primary text-[32px]">
+                        <div className="w-16 h-16 rounded-full bg-[#e8f5e9] border-2 border-[#a5d6a7] flex items-center justify-center mb-4 shadow-2xs">
+                          <span className="material-symbols-outlined text-[#1b5e20] text-[32px]">
                             send
                           </span>
                         </div>
-                        <div className="w-full bg-[#EFF7F2] rounded-lg p-space-sm mb-space-md text-left flex items-start gap-space-xs shadow-sm">
-                          <span className="material-symbols-outlined text-[#3D6850] text-[20px] shrink-0 mt-0.5">
+                        <div className="w-full bg-[#e8f5e9]/70 border border-[#a5d6a7] rounded-2xl p-4 mb-4 text-left flex items-start gap-3 shadow-2xs">
+                          <span className="material-symbols-outlined text-[#1b5e20] text-[20px] shrink-0 mt-0.5">
                             check_circle
                           </span>
-                          <div className="flex flex-col">
-                            <span className="font-label-md text-label-md text-[#3D6850]">
+                          <div className="flex flex-col text-xs sm:text-sm">
+                            <span className="font-['Quicksand'] font-bold text-[#1b5e20]">
                               Verification Link Dispatched
                             </span>
-                            <p className="font-body-sm text-body-sm text-[#3D6850]/90 mt-0.5">
-                              A new verification link has been sent to your email. Please wait{' '}
-                              <span className="font-bold underline">{countdown}</span> seconds
-                              before requesting another.
+                            <p className="text-[#2e7d32] mt-0.5">
+                              A new link has been sent to your inbox. Please wait{' '}
+                              <span className="font-bold underline">{countdown}</span> seconds before requesting another.
                             </p>
                           </div>
                         </div>
-                        <h2 className="font-headline-lg text-headline-lg text-on-surface mb-space-xs">
+                        <h2 className="font-['Quicksand'] font-bold text-2xl text-[#22191b] mb-2">
                           Check your inbox again
                         </h2>
-                        <p className="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mb-space-lg">
-                          We’ve superseded prior links with a new cryptographic verification code.
-                          Click the new link in{' '}
-                          <span className="font-semibold text-on-surface">j***@example.com</span>.
+                        <p className="text-xs sm:text-sm text-[#534247] max-w-md mx-auto mb-6">
+                          We’ve superseded prior links with a fresh cryptographic code. Click the new link in your inbox.
                         </p>
-                        <div className="w-full flex items-center justify-center gap-space-sm">
+                        <div className="w-full flex items-center justify-center gap-3">
                           <button
                             type="button"
                             onClick={triggerResendAction}
-                            className="w-full sm:w-auto px-space-md py-2.5 rounded-lg bg-surface-container font-label-lg text-label-lg flex items-center justify-center gap-space-2xs text-on-surface hover:bg-surface-variant cursor-pointer"
+                            className="px-5 py-2.5 rounded-full bg-[#81d4fa] hover:bg-[#6ecefb] text-[#22191b] font-['Quicksand'] font-bold text-xs sm:text-sm shadow-[0_4px_0_#4ba3e3] active:translate-y-[3px] active:shadow-[0_1px_0_#4ba3e3] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                           >
-                            <span className="material-symbols-outlined text-[18px]">
-                              forward_to_inbox
-                            </span>
+                            <span className="material-symbols-outlined text-[18px]">forward_to_inbox</span>
                             <span>Resend Again</span>
                           </button>
                           <button
                             type="button"
                             onClick={() => onNavigateScreen('AUTH-01-LOGIN')}
-                            className="px-space-md py-2.5 font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
+                            className="px-5 py-2.5 rounded-full font-['Quicksand'] font-bold text-xs sm:text-sm text-[#534247] hover:text-[#964261] bg-[#fff0f2] hover:bg-[#ffe4e9] border border-[#f5e4e7] transition-colors cursor-pointer"
                           >
                             Return to Login
                           </button>
@@ -930,106 +853,79 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
 
                 {/* State 3: VERIFIED */}
                 {verifyState === 'verified' && (
-                  <div className="flex flex-col items-center text-center">
-                    <div className="relative w-20 h-20 mb-space-md flex items-center justify-center">
-                      <div className="absolute inset-0 rounded-full bg-[#EFF7F2] opacity-80 blur-md"></div>
-                      <div className="relative w-16 h-16 rounded-full bg-[#EFF7F2] text-[#3D6850] flex items-center justify-center shadow-sm">
+                  <div className="flex flex-col items-center">
+                    <div className="relative w-20 h-20 mb-4 flex items-center justify-center">
+                      <div className="absolute inset-0 rounded-full bg-[#a5d6a7]/30 blur-md" />
+                      <div className="relative w-16 h-16 rounded-full bg-[#e8f5e9] border-2 border-[#a5d6a7] text-[#1b5e20] flex items-center justify-center shadow-xs">
                         <span className="material-symbols-outlined text-[36px]">verified</span>
                       </div>
-                      <span className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[#3D6850] text-surface-container-lowest flex items-center justify-center text-[12px] shadow-sm">
+                      <span className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[#1b5e20] text-white flex items-center justify-center text-[12px] shadow-2xs">
                         <span className="material-symbols-outlined text-[14px]">done_all</span>
                       </span>
                     </div>
-                    <div className="inline-flex items-center gap-1.5 px-space-xs py-0.5 rounded-full bg-[#EFF7F2] text-[#3D6850] mb-space-xs font-label-sm text-label-sm font-semibold">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#e8f5e9] text-[#1b5e20] mb-3 text-xs font-['Quicksand'] font-bold border border-[#a5d6a7]">
                       <span>Student Identity Activated</span>
                     </div>
-                    <h2 className="font-headline-lg text-headline-lg text-on-surface mb-space-xs">
+                    <h2 className="font-['Quicksand'] font-bold text-2xl sm:text-3xl text-[#22191b] mb-2">
                       Email verified successfully!
                     </h2>
-                    <p className="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mb-space-lg">
-                      Your student account is now active and ready. Proceed to Student Home to
-                      start discovering courses, scheduling placement reviews, and beginning your
-                      modules.
+                    <p className="text-xs sm:text-sm text-[#534247] max-w-md mx-auto mb-6">
+                      Your student account is now active and ready. Proceed to Student Home to begin discovering courses, placement reviews, and modules.
                     </p>
-                    <div className="w-full bg-surface-container-low rounded-lg p-space-sm mb-space-lg text-left flex items-center justify-between">
-                      <div className="flex items-center gap-space-xs">
-                        <span className="w-8 h-8 rounded-full bg-surface-container-lowest text-primary flex items-center justify-center shadow-sm">
-                          <span className="material-symbols-outlined text-[18px]">school</span>
+                    <div className="w-full bg-[#fff8f8] rounded-2xl p-4 mb-6 border border-[#f5e4e7] text-left flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <span className="w-9 h-9 rounded-full bg-[#f48fb1] text-white flex items-center justify-center shadow-2xs">
+                          <span className="material-symbols-outlined text-[20px]">school</span>
                         </span>
                         <div className="flex flex-col">
-                          <span className="font-label-md text-label-md text-on-surface">
+                          <span className="font-['Quicksand'] font-bold text-xs sm:text-sm text-[#22191b]">
                             Target Destination
                           </span>
-                          <span className="font-body-sm text-body-sm text-tertiary">
+                          <span className="text-xs text-[#534247]">
                             STU-HOME-01 • /student/home
                           </span>
                         </div>
                       </div>
-                      <span className="font-label-sm text-label-sm bg-[#EFF7F2] text-[#3D6850] px-2 py-1 rounded font-bold">
+                      <span className="text-xs font-['Quicksand'] font-bold bg-[#e8f5e9] text-[#1b5e20] px-3 py-1 rounded-full border border-[#a5d6a7]">
                         Authorized
                       </span>
                     </div>
-                    <div className="w-full flex flex-col gap-space-xs items-center">
+                    <div className="w-full flex flex-col gap-2 items-center">
                       <button
                         type="button"
                         onClick={() => onNavigateScreen('STU-01-PORTAL')}
-                        className="w-full py-3 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg hover:bg-on-primary-fixed-variant transition-colors flex items-center justify-center gap-space-xs shadow-sm cursor-pointer"
+                        className="w-full py-3.5 rounded-full bg-[#f48fb1] hover:bg-[#f07fa6] text-white font-['Quicksand'] font-bold text-sm sm:text-base shadow-[0_4px_0_#d87395] active:translate-y-[3px] active:shadow-[0_1px_0_#d87395] transition-all flex items-center justify-center gap-2 cursor-pointer"
                       >
                         <span>Go to Student Home (STU-HOME-01)</span>
-                        <span className="material-symbols-outlined text-[18px]">
-                          arrow_forward
-                        </span>
+                        <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                       </button>
-                      <span className="font-body-sm text-body-sm text-tertiary mt-1">
-                        Automatic redirect in 10 seconds...
-                      </span>
                     </div>
                   </div>
                 )}
 
                 {/* State 4: EXPIRED */}
                 {verifyState === 'expired' && (
-                  <div className="flex flex-col items-center text-center">
-                    <div className="relative w-20 h-20 mb-space-md flex items-center justify-center">
-                      <div className="absolute inset-0 rounded-full bg-[#FCF6EC] opacity-80 blur-md"></div>
-                      <div className="relative w-16 h-16 rounded-full bg-[#FCF6EC] text-[#8C6328] flex items-center justify-center shadow-sm">
-                        <span className="material-symbols-outlined text-[36px]">schedule</span>
+                  <div className="flex flex-col items-center">
+                    <div className="relative w-20 h-20 mb-4 flex items-center justify-center">
+                      <div className="absolute inset-0 rounded-full bg-[#ffe082]/30 blur-md" />
+                      <div className="relative w-16 h-16 rounded-full bg-[#fffde7] border-2 border-[#ffe082] text-[#725c06] flex items-center justify-center shadow-xs">
+                        <span className="material-symbols-outlined text-[34px]">schedule</span>
                       </div>
-                      <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-[#8C6328] text-surface-container-lowest flex items-center justify-center text-[12px] shadow-sm">
-                        <span className="material-symbols-outlined text-[14px]">
-                          priority_high
-                        </span>
-                      </span>
                     </div>
-                    <div className="inline-flex items-center gap-1.5 px-space-xs py-0.5 rounded-full bg-[#FCF6EC] text-[#8C6328] mb-space-xs font-label-sm text-label-sm font-semibold">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fffde7] text-[#725c06] mb-3 text-xs font-['Quicksand'] font-bold border border-[#ffe082]">
                       <span>Security Token Expired</span>
                     </div>
-                    <h2 className="font-headline-lg text-headline-lg text-on-surface mb-space-xs">
+                    <h2 className="font-['Quicksand'] font-bold text-2xl text-[#22191b] mb-2">
                       Verification link expired
                     </h2>
-                    <p className="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mb-space-lg">
-                      This security link has expired for your protection. Please generate a fresh
-                      verification link.
+                    <p className="text-xs sm:text-sm text-[#534247] max-w-md mx-auto mb-6">
+                      This security link has expired for your protection. Please generate a fresh verification link.
                     </p>
-                    <div className="w-full bg-[#FCF6EC] rounded-lg p-space-sm mb-space-lg text-left flex items-start gap-space-xs">
-                      <span className="material-symbols-outlined text-[#8C6328] text-[20px] shrink-0 mt-0.5">
-                        lock_clock
-                      </span>
-                      <div className="flex flex-col">
-                        <span className="font-label-md text-label-md text-[#8C6328]">
-                          Token Validity Limit Exceeded
-                        </span>
-                        <span className="font-body-sm text-body-sm text-[#8C6328]/90 mt-0.5">
-                          Tokens are invalidated upon expiry or when a newer dispatch request is
-                          issued.
-                        </span>
-                      </div>
-                    </div>
-                    <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-space-sm">
+                    <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-3">
                       <button
                         type="button"
                         onClick={() => switchVerifyState('resend')}
-                        className="w-full sm:w-auto px-space-lg py-2.5 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg hover:bg-on-primary-fixed-variant transition-colors flex items-center justify-center gap-space-2xs shadow-sm cursor-pointer"
+                        className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#f48fb1] hover:bg-[#f07fa6] text-white font-['Quicksand'] font-bold text-xs sm:text-sm shadow-[0_4px_0_#d87395] active:translate-y-[3px] active:shadow-[0_1px_0_#d87395] transition-all flex items-center justify-center gap-2 cursor-pointer"
                       >
                         <span className="material-symbols-outlined text-[18px]">refresh</span>
                         <span>Send New Verification Link</span>
@@ -1037,7 +933,7 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
                       <button
                         type="button"
                         onClick={() => onNavigateScreen('AUTH-01-LOGIN')}
-                        className="w-full sm:w-auto px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors text-center cursor-pointer"
+                        className="w-full sm:w-auto px-5 py-3 rounded-full font-['Quicksand'] font-bold text-xs sm:text-sm text-[#534247] hover:text-[#964261] bg-[#fff0f2] hover:bg-[#ffe4e9] border border-[#f5e4e7] transition-colors cursor-pointer"
                       >
                         Return to Login
                       </button>
@@ -1047,100 +943,41 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
 
                 {/* State 5: FAILED / INVALID */}
                 {verifyState === 'failed' && (
-                  <div className="flex flex-col items-center text-center">
-                    <div className="relative w-20 h-20 mb-space-md flex items-center justify-center">
-                      <div className="absolute inset-0 rounded-full bg-[#FAF0F1] opacity-80 blur-md"></div>
-                      <div className="relative w-16 h-16 rounded-full bg-[#FAF0F1] text-[#8F3E46] flex items-center justify-center shadow-sm">
-                        <span className="material-symbols-outlined text-[36px]">
-                          error_outline
-                        </span>
+                  <div className="flex flex-col items-center">
+                    <div className="relative w-20 h-20 mb-4 flex items-center justify-center">
+                      <div className="absolute inset-0 rounded-full bg-[#ffdad6]/40 blur-md" />
+                      <div className="relative w-16 h-16 rounded-full bg-[#fff0f2] border-2 border-[#ba1a1a] text-[#ba1a1a] flex items-center justify-center shadow-xs">
+                        <span className="material-symbols-outlined text-[34px]">error_outline</span>
                       </div>
-                      <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-[#8F3E46] text-surface-container-lowest flex items-center justify-center text-[12px] shadow-sm">
-                        <span className="material-symbols-outlined text-[14px]">close</span>
-                      </span>
                     </div>
-                    <div className="inline-flex items-center gap-1.5 px-space-xs py-0.5 rounded-full bg-[#FAF0F1] text-[#8F3E46] mb-space-xs font-label-sm text-label-sm font-semibold">
-                      <span>Access Denied</span>
-                      <span>•</span>
-                      <span>403 Invariant</span>
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ffdad6] text-[#93000a] mb-3 text-xs font-['Quicksand'] font-bold border border-[#ba1a1a]/30">
+                      <span>Access Denied • 403 Invariant</span>
                     </div>
-                    <h2 className="font-headline-lg text-headline-lg text-on-surface mb-space-xs">
+                    <h2 className="font-['Quicksand'] font-bold text-2xl text-[#22191b] mb-2">
                       Invalid verification token
                     </h2>
-                    <p className="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mb-space-lg">
-                      This verification link is invalid, malformed, or has already been consumed.
-                      For security, raw token signatures cannot be reused across active sessions.
+                    <p className="text-xs sm:text-sm text-[#534247] max-w-md mx-auto mb-6">
+                      This link is invalid or malformed. For security, raw token signatures cannot be reused across active sessions.
                     </p>
-                    <div className="w-full bg-[#FAF0F1] rounded-lg p-space-sm mb-space-lg text-left flex items-start gap-space-xs">
-                      <span className="material-symbols-outlined text-[#8F3E46] text-[20px] shrink-0 mt-0.5">
-                        gavel
-                      </span>
-                      <div className="flex flex-col">
-                        <span className="font-label-md text-label-md text-[#8F3E46]">
-                          Invariant Rule Enforced
-                        </span>
-                        <span className="font-body-sm text-body-sm text-[#8F3E46]/90 mt-0.5">
-                          Protected Student routes (/courses, /placement, /live) remain completely
-                          inaccessible until verification passes.
-                        </span>
-                      </div>
-                    </div>
-                    <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-space-sm">
+                    <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-3">
                       <button
                         type="button"
                         onClick={() => switchVerifyState('resend')}
-                        className="w-full sm:w-auto px-space-md py-2.5 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg hover:bg-on-primary-fixed-variant transition-colors flex items-center justify-center gap-space-2xs shadow-sm cursor-pointer"
+                        className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#f48fb1] hover:bg-[#f07fa6] text-white font-['Quicksand'] font-bold text-xs sm:text-sm shadow-[0_4px_0_#d87395] active:translate-y-[3px] active:shadow-[0_1px_0_#d87395] transition-all flex items-center justify-center gap-2 cursor-pointer"
                       >
-                        <span className="material-symbols-outlined text-[18px]">
-                          outgoing_mail
-                        </span>
+                        <span className="material-symbols-outlined text-[18px]">outgoing_mail</span>
                         <span>Resend Email</span>
                       </button>
                       <button
                         type="button"
                         onClick={() => onNavigateScreen('AUTH-01-LOGIN')}
-                        className="w-full sm:w-auto px-space-md py-2.5 rounded-lg bg-surface-container text-on-surface font-label-lg text-label-lg hover:bg-surface-variant transition-colors text-center shadow-sm cursor-pointer"
+                        className="w-full sm:w-auto px-5 py-3 rounded-full font-['Quicksand'] font-bold text-xs sm:text-sm text-[#534247] hover:text-[#964261] bg-[#fff0f2] hover:bg-[#ffe4e9] border border-[#f5e4e7] transition-colors cursor-pointer"
                       >
                         Return to Login
                       </button>
                     </div>
                   </div>
                 )}
-
-                {/* Institutional Security Notice Footer */}
-                <div className="mt-space-xl pt-space-md border-t-0 bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between text-left">
-                  <div className="flex items-center gap-space-xs">
-                    <span className="material-symbols-outlined text-primary text-[18px]">
-                      verified_user
-                    </span>
-                    <span className="font-body-sm text-body-sm text-on-surface-variant">
-                      Single-use security token verification.
-                    </span>
-                  </div>
-                  <span className="font-label-sm text-label-sm text-tertiary hidden sm:inline">
-                    SHA-256 Auth
-                  </span>
-                </div>
-              </div>
-
-              {/* Student Support & Academic Guidance */}
-              <div className="w-full flex flex-col sm:flex-row items-center justify-between px-space-xs gap-space-xs text-center sm:text-left">
-                <div className="flex items-center gap-space-2xs">
-                  <span className="material-symbols-outlined text-tertiary text-[16px]">
-                    contact_support
-                  </span>
-                  <span className="font-body-sm text-body-sm text-on-surface-variant">
-                    Having trouble receiving mail?
-                  </span>
-                  <span className="font-label-sm text-label-sm text-primary hover:underline cursor-pointer">
-                    Contact Academy Registrar
-                  </span>
-                </div>
-                <div className="flex items-center gap-space-xs font-label-sm text-label-sm text-tertiary">
-                  <span>Student Route Guard (AUTH-02)</span>
-                  <span>•</span>
-                  <span>Build v2.4</span>
-                </div>
               </div>
             </div>
           </div>
@@ -1151,18 +988,18 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
       {/* SCREEN 3: LOGIN (AUTH-01-LOGIN)                                     */}
       {/* =================================================================== */}
       {screenId === 'AUTH-01-LOGIN' && (
-        <main className="w-full bg-background flex-grow flex items-center justify-center py-space-xl">
+        <main className="w-full bg-[#fff8f8] flex-grow flex items-center justify-center py-10 sm:py-16">
           <div className="flex flex-col w-full">
-            <div className="w-full max-w-7xl mx-auto px-margin py-space-md flex flex-col items-center">
+            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col items-center">
               {/* State Inspector Controller / Interactive Showcase Dock */}
-              <div className="w-full max-w-3xl mb-space-xl p-space-sm rounded-xl bg-surface-container-low shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-sm">
-                <div className="flex items-center gap-space-xs text-on-surface-variant">
-                  <span className="material-symbols-outlined text-[20px] text-primary">tune</span>
-                  <span className="font-label-sm text-label-sm tracking-wider uppercase text-on-surface">
+              <div className="w-full max-w-3xl mb-8 p-3.5 rounded-3xl bg-white/90 backdrop-blur-sm border border-[#fbeaec] shadow-[0_4px_16px_rgba(244,143,177,0.08)] flex flex-col md:flex-row items-center justify-between gap-3">
+                <div className="flex items-center gap-2 text-[#534247]">
+                  <span className="material-symbols-outlined text-[18px] text-[#f48fb1]">tune</span>
+                  <span className="font-['Quicksand'] font-bold text-xs tracking-wider uppercase text-[#22191b]">
                     Screen State Inspector:
                   </span>
                 </div>
-                <div className="flex flex-wrap items-center justify-center gap-1.5">
+                <div className="flex flex-wrap items-center justify-center gap-1.5 font-['Quicksand']">
                   {(
                     [
                       { key: 'default', label: 'A: Default' },
@@ -1179,10 +1016,10 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
                         key={btn.key}
                         type="button"
                         onClick={() => applyLoginQaState(btn.key)}
-                        className={`px-space-xs py-1 rounded font-label-md text-label-md transition-all cursor-pointer ${
+                        className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
                           isActive
-                            ? 'bg-primary text-on-primary shadow-sm'
-                            : 'text-on-surface-variant bg-surface-container hover:text-on-surface'
+                            ? 'bg-[#f48fb1] text-white shadow-xs'
+                            : 'text-[#534247] bg-[#fff0f2] hover:bg-[#ffe4e9] hover:text-[#22191b]'
                         }`}
                       >
                         {btn.label}
@@ -1192,374 +1029,361 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
                 </div>
               </div>
 
-              <div className="w-full flex flex-col lg:flex-row items-start justify-center gap-space-xl">
+              <div className="w-full flex flex-col lg:flex-row items-stretch justify-center gap-8 max-w-5xl">
                 {/* Unified Login Form Card */}
                 <section
                   aria-labelledby="login-header"
-                  className="w-full max-w-lg bg-surface-container-lowest rounded-xl shadow-md p-space-lg md:p-space-xl transition-all relative overflow-hidden"
+                  className="w-full max-w-lg bg-white rounded-3xl border border-[#fbeaec] shadow-[0_8px_30px_rgba(244,143,177,0.12)] p-6 sm:p-10 transition-all relative overflow-hidden flex flex-col justify-between"
                 >
-                  <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-secondary-fixed/30 blur-2xl pointer-events-none"></div>
-                  <div className="mb-space-lg">
-                    <div className="flex items-center gap-space-xs mb-space-2xs text-primary">
-                      <span className="material-symbols-outlined text-[20px]">lock</span>
-                      <span className="font-label-sm text-label-sm tracking-widest uppercase text-primary">
-                        Institutional Gateway
-                      </span>
-                    </div>
-                    <h1
-                      className="font-headline-lg text-headline-lg text-on-surface tracking-tight"
-                      id="login-header"
-                    >
-                      Welcome Back
-                    </h1>
-                    <p className="font-body-md text-body-md text-on-surface-variant mt-1">
-                      Log in to your Teacher Theint English account
-                    </p>
-                  </div>
-
-                  {/* State C: Invalid Credentials Alert */}
-                  {loginState === 'invalid-creds' && (
-                    <div className="mb-space-md p-space-sm rounded-lg bg-error-container text-on-error-container text-body-md font-body-md shadow-sm">
-                      <div className="flex items-start gap-space-xs">
-                        <span className="material-symbols-outlined text-error text-[20px] shrink-0 mt-0.5">
-                          error
-                        </span>
-                        <div>
-                          <p className="font-label-lg text-label-lg font-semibold text-error">
-                            Authentication Failed
-                          </p>
-                          <p className="text-body-sm mt-0.5 text-on-error-container">
-                            Incorrect email or password. Please check your credentials and try
-                            again.
-                          </p>
+                  <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-[#f48fb1]/15 blur-2xl pointer-events-none" />
+                  <div>
+                    {/* Header with Brand Avatar */}
+                    <div className="flex items-center gap-3.5 mb-6">
+                      <img
+                        src={TR_THEINT_LOGO_URL}
+                        alt="Teacher Theint"
+                        className="w-12 h-12 rounded-full object-cover border-2 border-[#f48fb1] shadow-2xs"
+                      />
+                      <div>
+                        <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#fff0f2] border border-[#f5e4e7] text-[11px] font-['Quicksand'] font-bold text-[#964261]">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#f48fb1]" />
+                          <span>Teacher Theint English Gateway</span>
                         </div>
+                        <h1
+                          className="font-['Quicksand'] font-bold text-2xl text-[#22191b] tracking-tight mt-0.5"
+                          id="login-header"
+                        >
+                          Welcome Back
+                        </h1>
                       </div>
                     </div>
-                  )}
 
-                  {/* State D: Unverified Student Notice */}
-                  {loginState === 'unverified' && (
-                    <div className="mb-space-md p-space-sm rounded-lg bg-surface-container-high text-on-surface shadow-sm">
-                      <div className="flex items-start gap-space-xs">
-                        <span className="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">
-                          mark_email_unread
-                        </span>
-                        <div className="space-y-1">
-                          <p className="font-label-lg text-label-lg font-semibold text-primary">
-                            Account Verification Required
+                    {/* State C: Invalid Credentials Alert */}
+                    {loginState === 'invalid-creds' && (
+                      <div className="mb-5 p-3.5 rounded-2xl bg-[#ffdad6]/70 border border-[#ba1a1a]/30 text-[#93000a] text-xs sm:text-sm shadow-2xs">
+                        <div className="flex items-start gap-2.5">
+                          <span className="material-symbols-outlined text-[#ba1a1a] text-[20px] shrink-0 mt-0.5">
+                            error
+                          </span>
+                          <div>
+                            <p className="font-['Quicksand'] font-bold text-[#ba1a1a]">
+                              Authentication Failed
+                            </p>
+                            <p className="text-[#93000a] mt-0.5">
+                              Incorrect email or password. Please check your credentials and try again.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* State D: Unverified Student Notice */}
+                    {loginState === 'unverified' && (
+                      <div className="mb-5 p-3.5 rounded-2xl bg-[#fff0f2] border border-[#f5e4e7] text-[#22191b] shadow-2xs">
+                        <div className="flex items-start gap-2.5">
+                          <span className="material-symbols-outlined text-[#f48fb1] text-[20px] shrink-0 mt-0.5">
+                            mark_email_unread
+                          </span>
+                          <div className="text-xs sm:text-sm">
+                            <p className="font-['Quicksand'] font-bold text-[#964261]">
+                              Account Verification Required
+                            </p>
+                            <p className="text-[#534247] mt-0.5">
+                              Your email address has not been verified yet. Course materials remain locked until validated.
+                            </p>
+                            <button
+                              type="button"
+                              onClick={() => onNavigateScreen('AUTH-03-VERIFY-EMAIL')}
+                              className="inline-flex items-center gap-1 font-['Quicksand'] font-bold text-[#964261] hover:text-[#f48fb1] hover:underline mt-1.5 cursor-pointer text-xs"
+                            >
+                              <span>Verify Email Now</span>
+                              <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Form Element */}
+                    <form className="space-y-4 font-['Nunito_Sans']" noValidate onSubmit={handleLoginSubmit}>
+                      {/* Field 1: Email Address */}
+                      <div className="flex flex-col gap-1.5">
+                        <label
+                          className="font-['Quicksand'] font-bold text-xs sm:text-sm text-[#22191b] flex justify-between items-center"
+                          htmlFor="email-input"
+                        >
+                          <span>Institutional Email</span>
+                          {loginState === 'validation-error' && (
+                            <span className="text-xs text-[#ba1a1a] font-bold">Invalid format</span>
+                          )}
+                        </label>
+                        <div className="relative">
+                          <input
+                            id="email-input"
+                            type="email"
+                            value={loginEmail}
+                            disabled={loginState === 'submitting'}
+                            onChange={(e) => setLoginEmail(e.target.value)}
+                            placeholder="name@example.com"
+                            className={`w-full h-11 px-4 pr-10 rounded-2xl bg-[#fff8f8] text-[#22191b] placeholder:text-[#867277] text-sm border transition-all focus:bg-white focus:outline-none focus:border-[#f48fb1] focus:ring-2 focus:ring-[#f48fb1]/20 ${
+                              loginState === 'validation-error' ? 'border-[#ba1a1a] ring-1 ring-[#ba1a1a]' : 'border-[#f5e4e7]'
+                            }`}
+                            required
+                          />
+                          <span className="material-symbols-outlined absolute right-3.5 top-3 text-[18px] text-[#867277] pointer-events-none">
+                            mail
+                          </span>
+                        </div>
+                        {loginState === 'validation-error' && (
+                          <p className="text-xs text-[#ba1a1a] font-semibold mt-0.5 flex items-center gap-1">
+                            <span className="material-symbols-outlined text-[14px]">warning</span>
+                            Please enter a valid academic or personal email.
                           </p>
-                          <p className="text-body-sm text-on-surface-variant">
-                            Your email address has not been verified yet. Institutional course
-                            materials remain locked until validated.
-                          </p>
+                        )}
+                      </div>
+
+                      {/* Field 2: Password */}
+                      <div className="flex flex-col gap-1.5">
+                        <div className="flex justify-between items-center">
+                          <label
+                            className="font-['Quicksand'] font-bold text-xs sm:text-sm text-[#22191b]"
+                            htmlFor="password-input"
+                          >
+                            Password
+                          </label>
                           <button
                             type="button"
                             onClick={() => onNavigateScreen('AUTH-03-VERIFY-EMAIL')}
-                            className="inline-flex items-center gap-1 font-label-md text-label-md text-primary font-bold hover:underline mt-1 cursor-pointer"
+                            className="text-xs font-['Quicksand'] font-bold text-[#006685] hover:text-[#964261] transition-colors cursor-pointer"
                           >
-                            <span>Verify Email Now</span>
-                            <span className="material-symbols-outlined text-[16px]">
-                              arrow_forward
+                            Forgot Password?
+                          </button>
+                        </div>
+                        <div className="relative">
+                          <input
+                            id="password-input"
+                            type={showLoginPwd ? 'text' : 'password'}
+                            value={loginPassword}
+                            disabled={loginState === 'submitting'}
+                            onChange={(e) => setLoginPassword(e.target.value)}
+                            placeholder="••••••••••••"
+                            className={`w-full h-11 px-4 pr-11 rounded-2xl bg-[#fff8f8] text-[#22191b] placeholder:text-[#867277] text-sm border transition-all focus:bg-white focus:outline-none focus:border-[#f48fb1] focus:ring-2 focus:ring-[#f48fb1]/20 ${
+                              loginState === 'validation-error' ? 'border-[#ba1a1a] ring-1 ring-[#ba1a1a]' : 'border-[#f5e4e7]'
+                            }`}
+                            required
+                          />
+                          <button
+                            aria-label="Toggle password visibility"
+                            type="button"
+                            onClick={() => setShowLoginPwd((prev) => !prev)}
+                            className="absolute right-3 top-2.5 w-7 h-7 rounded flex items-center justify-center text-[#534247] hover:text-[#22191b] transition-colors cursor-pointer"
+                          >
+                            <span className="material-symbols-outlined text-[18px]">
+                              {showLoginPwd ? 'visibility_off' : 'visibility'}
                             </span>
                           </button>
                         </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Form Element */}
-                  <form className="space-y-space-md" noValidate onSubmit={handleLoginSubmit}>
-                    {/* Field 1: Email Address */}
-                    <div className="flex flex-col gap-1.5">
-                      <label
-                        className="font-label-lg text-label-lg text-on-surface flex justify-between items-center"
-                        htmlFor="email-input"
-                      >
-                        <span>Institutional Email</span>
                         {loginState === 'validation-error' && (
-                          <span className="text-label-sm font-label-sm text-error">
-                            Invalid format
-                          </span>
+                          <p className="text-xs text-[#ba1a1a] font-semibold mt-0.5 flex items-center gap-1">
+                            <span className="material-symbols-outlined text-[14px]">warning</span>
+                            Password must be at least 8 characters.
+                          </p>
                         )}
-                      </label>
-                      <div className="relative">
-                        <input
-                          id="email-input"
-                          type="email"
-                          value={loginEmail}
-                          disabled={loginState === 'submitting'}
-                          onChange={(e) => setLoginEmail(e.target.value)}
-                          placeholder="name@example.com"
-                          className={`w-full h-11 px-space-sm pr-10 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline text-body-md font-body-md shadow-sm transition-all focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 ${
-                            loginState === 'validation-error' ? 'ring-2 ring-error' : ''
-                          }`}
-                          required
-                        />
-                        <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-[18px] text-outline pointer-events-none">
-                          mail
-                        </span>
                       </div>
-                      {loginState === 'validation-error' && (
-                        <p className="text-body-sm font-body-sm text-error mt-0.5 flex items-center gap-1">
-                          <span className="material-symbols-outlined text-[14px]">warning</span>
-                          Please enter a valid academic or personal email address.
-                        </p>
-                      )}
-                    </div>
 
-                    {/* Field 2: Password */}
-                    <div className="flex flex-col gap-1.5">
-                      <div className="flex justify-between items-center">
-                        <label
-                          className="font-label-lg text-label-lg text-on-surface"
-                          htmlFor="password-input"
-                        >
-                          Password
-                        </label>
+                      {/* Tactile Bubblegum Primary Submit Button */}
+                      <div className="pt-2">
                         <button
-                          type="button"
-                          onClick={() => onNavigateScreen('AUTH-03-VERIFY-EMAIL')}
-                          className="font-label-md text-label-md text-secondary hover:text-primary transition-colors focus:outline-none focus:underline cursor-pointer"
+                          type="submit"
+                          disabled={loginState === 'submitting'}
+                          className="w-full h-12 rounded-full bg-[#f48fb1] hover:bg-[#f07fa6] text-white font-['Quicksand'] font-bold text-sm sm:text-base shadow-[0_4px_0_#d87395] active:translate-y-[3px] active:shadow-[0_1px_0_#d87395] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                         >
-                          Forgot Password?
+                          {loginState !== 'submitting' ? (
+                            <>
+                              <span>Log In</span>
+                              <span className="material-symbols-outlined text-[18px]">login</span>
+                            </>
+                          ) : (
+                            <>
+                              <span className="animate-spin material-symbols-outlined text-[20px]">
+                                progress_activity
+                              </span>
+                              <span>Authenticating Identity...</span>
+                            </>
+                          )}
                         </button>
                       </div>
-                      <div className="relative">
-                        <input
-                          id="password-input"
-                          type={showLoginPwd ? 'text' : 'password'}
-                          value={loginPassword}
-                          disabled={loginState === 'submitting'}
-                          onChange={(e) => setLoginPassword(e.target.value)}
-                          placeholder="••••••••••••"
-                          className={`w-full h-11 px-space-sm pr-12 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline text-body-md font-body-md shadow-sm transition-all focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 ${
-                            loginState === 'validation-error' ? 'ring-2 ring-error' : ''
-                          }`}
-                          required
-                        />
-                        <button
-                          aria-label="Toggle password visibility"
-                          type="button"
-                          onClick={() => setShowLoginPwd((prev) => !prev)}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded flex items-center justify-center text-outline hover:text-on-surface transition-colors focus:outline-none cursor-pointer"
-                        >
-                          <span className="material-symbols-outlined text-[20px]">
-                            {showLoginPwd ? 'visibility_off' : 'visibility'}
-                          </span>
-                        </button>
-                      </div>
-                      {loginState === 'validation-error' && (
-                        <p className="text-body-sm font-body-sm text-error mt-0.5 flex items-center gap-1">
-                          <span className="material-symbols-outlined text-[14px]">warning</span>
-                          Password must be at least 8 characters.
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Submission CTA */}
-                    <div className="pt-space-xs">
-                      <button
-                        type="submit"
-                        disabled={loginState === 'submitting'}
-                        className={`w-full h-12 rounded-lg bg-primary hover:bg-secondary active:bg-on-primary-fixed-variant text-on-primary font-label-lg text-label-lg transition-all flex items-center justify-center gap-space-xs shadow-md shadow-primary/20 focus:outline-none focus:ring-4 focus:ring-primary-fixed cursor-pointer ${
-                          loginState === 'submitting' ? 'opacity-60 cursor-not-allowed' : ''
-                        }`}
-                      >
-                        {loginState !== 'submitting' ? (
-                          <span className="flex items-center gap-space-xs">
-                            <span>Log In</span>
-                            <span className="material-symbols-outlined text-[18px]">login</span>
-                          </span>
-                        ) : (
-                          <span className="flex items-center gap-space-xs">
-                            <span className="animate-spin material-symbols-outlined text-[20px]">
-                              progress_activity
-                            </span>
-                            <span>Authenticating Identity...</span>
-                          </span>
-                        )}
-                      </button>
-                    </div>
-                  </form>
+                    </form>
+                  </div>
 
                   {/* Secondary Institutional Path */}
-                  <div className="mt-space-lg pt-space-md bg-surface-container-low rounded-lg p-space-sm text-center">
-                    <p className="font-body-md text-body-md text-on-surface-variant">
-                      Don&apos;t have an enrolled account?{' '}
+                  <div className="mt-6 pt-5 border-t border-[#f5e4e7] bg-[#fff8f8] rounded-2xl p-3 text-center">
+                    <p className="text-xs sm:text-sm text-[#534247]">
+                      Don’t have an enrolled account?{' '}
                       <button
                         type="button"
                         onClick={() => onNavigateScreen('AUTH-02-REGISTER')}
-                        className="font-label-lg text-label-lg text-primary hover:text-secondary font-bold underline transition-colors cursor-pointer"
+                        className="font-['Quicksand'] font-bold text-[#964261] hover:text-[#f48fb1] underline transition-colors cursor-pointer"
                       >
                         Register as Student
                       </button>
                     </p>
-                  </div>
-
-                  {/* Inviolable Architecture Pill */}
-                  <div className="mt-space-md flex items-center justify-center gap-1.5 text-tertiary">
-                    <span className="material-symbols-outlined text-[14px]">
-                      format_image_left
-                    </span>
-                    <span className="font-label-sm text-label-sm uppercase tracking-wider">
-                      Unified Single Point of Access • TLS 1.3 Strict
-                    </span>
                   </div>
                 </section>
 
                 {/* Architecture Explainer & Dispatch Resolution Card */}
                 <aside
                   aria-label="Dispatch Architecture Matrix"
-                  className="w-full max-w-md flex flex-col gap-space-md"
+                  className="w-full max-w-md flex flex-col gap-4"
                 >
-                  <div className="bg-surface-container-lowest rounded-xl shadow-md p-space-lg transition-all">
-                    <div className="flex items-center justify-between pb-space-xs mb-space-sm">
-                      <div className="flex items-center gap-space-xs">
-                        <span className="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
-                        <span className="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">
-                          Inviolable Model
+                  <div className="bg-white rounded-3xl border border-[#fbeaec] shadow-[0_8px_30px_rgba(244,143,177,0.12)] p-6 transition-all flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#f5e4e7]">
+                        <div className="flex items-center gap-2">
+                          <span className="w-2.5 h-2.5 rounded-full bg-[#81d4fa] animate-pulse" />
+                          <span className="font-['Quicksand'] font-bold text-xs uppercase tracking-widest text-[#006685]">
+                            Inviolable Role Architecture
+                          </span>
+                        </div>
+                        <span className="text-[11px] font-['Quicksand'] font-bold bg-[#fff0f2] text-[#964261] px-2.5 py-0.5 rounded-full border border-[#f5e4e7]">
+                          RBAC Deterministic
                         </span>
                       </div>
-                      <span className="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-surface-variant">
-                        RBAC Deterministic
-                      </span>
-                    </div>
-                    <p className="font-headline-md text-headline-md text-on-surface mb-1">
-                      Single Entry, Strict Dispatch
-                    </p>
-                    <p className="font-body-sm text-body-sm text-on-surface-variant mb-space-md">
-                      The platform forbids manual role pickers or subjective &ldquo;View As&rdquo;
-                      selectors. Identity cryptographically decrees the operational environment.
-                    </p>
+                      <h2 className="font-['Quicksand'] font-bold text-lg text-[#22191b] mb-1">
+                        Single Entry, Strict Role Dispatch
+                      </h2>
+                      <p className="text-xs text-[#534247] mb-4">
+                        The platform enforces role fidelity. Identity cryptographically decrees the operational environment.
+                      </p>
 
-                    {/* Mapping Matrix Items */}
-                    <div className="space-y-space-xs">
-                      {/* Student Route Target */}
-                      <div
-                        onClick={() => onNavigateScreen('STU-01-PORTAL')}
-                        className="p-space-sm rounded-lg bg-surface-container-low transition-all flex items-center justify-between cursor-pointer hover:bg-surface-container"
-                      >
-                        <div className="flex items-center gap-space-xs">
-                          <div className="w-8 h-8 rounded-lg bg-surface-container-lowest text-primary flex items-center justify-center shadow-sm">
-                            <span className="material-symbols-outlined text-[18px]">school</span>
-                          </div>
-                          <div>
-                            <div className="font-label-md text-label-md text-on-surface">
-                              Student Profile
+                      {/* Mapping Matrix Items */}
+                      <div className="space-y-2.5 font-['Quicksand']">
+                        {/* Student Route Target */}
+                        <div
+                          onClick={() => onNavigateScreen('STU-01-PORTAL')}
+                          className="p-3 rounded-2xl bg-[#fff8f8] hover:bg-[#fff0f2] border border-[#f5e4e7] transition-all flex items-center justify-between cursor-pointer group shadow-2xs"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="w-9 h-9 rounded-full bg-[#f48fb1] text-white flex items-center justify-center shadow-xs shrink-0">
+                              <span className="material-symbols-outlined text-[18px]">school</span>
                             </div>
-                            <div className="font-body-sm text-body-sm text-on-surface-variant">
-                              Curriculum &amp; practice modules
+                            <div>
+                              <div className="font-bold text-xs sm:text-sm text-[#22191b] group-hover:text-[#f48fb1] transition-colors">
+                                Student Learning Portal
+                              </div>
+                              <div className="text-[11px] text-[#534247] font-medium font-['Nunito_Sans']">
+                                Curriculum, exercises &amp; 1-on-1 requests
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="text-right">
-                          <span className="font-label-sm text-label-sm px-2 py-1 rounded bg-surface-container font-mono text-primary font-bold">
-                            STU-HOME-01
-                          </span>
-                          <div className="text-[10px] text-tertiary mt-0.5">/student/home</div>
-                        </div>
-                      </div>
-
-                      {/* Teacher Route Target */}
-                      <div
-                        onClick={() => onNavigateScreen('TEA-01-PORTAL')}
-                        className="p-space-sm rounded-lg bg-surface-container-low transition-all flex items-center justify-between cursor-pointer hover:bg-surface-container"
-                      >
-                        <div className="flex items-center gap-space-xs">
-                          <div className="w-8 h-8 rounded-lg bg-surface-container-lowest text-secondary flex items-center justify-center shadow-sm">
-                            <span className="material-symbols-outlined text-[18px]">
-                              assignment_turned_in
+                          <div className="text-right">
+                            <span className="text-[11px] px-2 py-0.5 rounded-full bg-white font-mono text-[#964261] font-bold border border-[#f5e4e7]">
+                              STU-HOME-01
                             </span>
-                          </div>
-                          <div>
-                            <div className="font-label-md text-label-md text-on-surface">
-                              Teacher Operational
-                            </div>
-                            <div className="font-body-sm text-body-sm text-on-surface-variant">
-                              Grading queues &amp; cohorts
-                            </div>
+                            <div className="text-[10px] text-[#867277] mt-0.5 font-sans">/student/home</div>
                           </div>
                         </div>
-                        <div className="text-right">
-                          <span className="font-label-sm text-label-sm px-2 py-1 rounded bg-surface-container font-mono text-secondary font-bold">
-                            TCH-DASH-01
-                          </span>
-                          <div className="text-[10px] text-tertiary mt-0.5">/teacher/console</div>
-                        </div>
-                      </div>
 
-                      {/* Admin Route Target */}
-                      <div
-                        onClick={() => onNavigateScreen('ADM-01-PORTAL')}
-                        className={`p-space-sm rounded-lg transition-all flex items-center justify-between cursor-pointer ${
-                          loginState === 'dispatch'
-                            ? 'ring-2 ring-primary bg-surface-container-highest'
-                            : 'bg-surface-container-low hover:bg-surface-container'
-                        }`}
-                      >
-                        <div className="flex items-center gap-space-xs">
-                          <div className="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface flex items-center justify-center shadow-sm">
-                            <span className="material-symbols-outlined text-[18px]">
-                              admin_panel_settings
-                            </span>
+                        {/* Teacher Route Target */}
+                        <div
+                          onClick={() => onNavigateScreen('TEA-01-PORTAL')}
+                          className="p-3 rounded-2xl bg-[#fff8f8] hover:bg-[#fff0f2] border border-[#f5e4e7] transition-all flex items-center justify-between cursor-pointer group shadow-2xs"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="w-9 h-9 rounded-full bg-[#81d4fa] text-[#22191b] flex items-center justify-center shadow-xs shrink-0 font-bold">
+                              <span className="material-symbols-outlined text-[18px]">assignment_turned_in</span>
+                            </div>
+                            <div>
+                              <div className="font-bold text-xs sm:text-sm text-[#22191b] group-hover:text-[#006685] transition-colors">
+                                Teacher Academic Console
+                              </div>
+                              <div className="text-[11px] text-[#534247] font-medium font-['Nunito_Sans']">
+                                Cohorts, rubrics &amp; assigned 1-on-1 clinics
+                              </div>
+                            </div>
                           </div>
-                          <div>
-                            <div className="font-label-md text-label-md text-on-surface">
-                              Admin Master
-                            </div>
-                            <div className="font-body-sm text-body-sm text-on-surface-variant">
-                              Institutional telemetry &amp; security
-                            </div>
+                          <div className="text-right">
+                            <span className="text-[11px] px-2 py-0.5 rounded-full bg-white font-mono text-[#006685] font-bold border border-[#f5e4e7]">
+                              TCH-DASH-01
+                            </span>
+                            <div className="text-[10px] text-[#867277] mt-0.5 font-sans">/teacher/console</div>
                           </div>
                         </div>
-                        <div className="text-right">
-                          <span className="font-label-sm text-label-sm px-2 py-1 rounded bg-surface-container font-mono text-on-surface font-bold">
-                            ADM-DASH-01
-                          </span>
-                          <div className="text-[10px] text-tertiary mt-0.5">/admin/ops</div>
+
+                        {/* Admin Route Target */}
+                        <div
+                          onClick={() => onNavigateScreen('ADM-01-PORTAL')}
+                          className={`p-3 rounded-2xl border transition-all flex items-center justify-between cursor-pointer group shadow-2xs ${
+                            loginState === 'dispatch'
+                              ? 'ring-2 ring-[#f48fb1] bg-[#fff0f2] border-[#f48fb1]'
+                              : 'bg-[#fff8f8] hover:bg-[#fff0f2] border-[#f5e4e7]'
+                          }`}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="w-9 h-9 rounded-full bg-[#ffe082] text-[#22191b] flex items-center justify-center shadow-xs shrink-0 font-bold">
+                              <span className="material-symbols-outlined text-[18px]">admin_panel_settings</span>
+                            </div>
+                            <div>
+                              <div className="font-bold text-xs sm:text-sm text-[#22191b] group-hover:text-[#964261] transition-colors">
+                                Admin Operation Control
+                              </div>
+                              <div className="text-[11px] text-[#534247] font-medium font-['Nunito_Sans']">
+                                Enrollment release, faculty match &amp; decrees
+                              </div>
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <span className="text-[11px] px-2 py-0.5 rounded-full bg-white font-mono text-[#22191b] font-bold border border-[#f5e4e7]">
+                              ADM-DASH-01
+                            </span>
+                            <div className="text-[10px] text-[#867277] mt-0.5 font-sans">/admin/ops</div>
+                          </div>
                         </div>
                       </div>
                     </div>
 
-                    {/* Live Resolution Simulator Simulation Box */}
+                    {/* Live Resolution Simulator Box */}
                     {loginState === 'dispatch' && (
-                      <div className="mt-space-md p-space-sm rounded-lg bg-surface-container-high transition-all">
-                        <div className="flex items-center justify-between text-on-surface-variant mb-1">
-                          <span className="font-label-sm text-label-sm font-bold uppercase tracking-wider text-primary">
-                            Dispatch Resolution In Action
+                      <div className="mt-4 p-3.5 rounded-2xl bg-[#fff0f2] border border-[#f5e4e7] transition-all">
+                        <div className="flex items-center justify-between text-xs mb-1 font-['Quicksand'] font-bold text-[#964261]">
+                          <span className="uppercase tracking-wider">
+                            Dispatch Resolution Active
                           </span>
-                          <span className="text-body-sm font-body-sm">Status: 200 OK</span>
+                          <span className="text-[#1b5e20] bg-[#e8f5e9] px-2 py-0.5 rounded-full border border-[#a5d6a7]">
+                            200 OK
+                          </span>
                         </div>
-                        <div className="font-body-sm text-body-sm text-on-surface mb-2">
-                          Identity payload decrypted: <strong>theint.director@theint.edu</strong>.
-                          Inviolable Role:{' '}
-                          <span className="text-primary font-bold">Admin Master</span>.
+                        <div className="text-xs text-[#22191b] mb-2 font-['Nunito_Sans']">
+                          Identity verified: <strong>admin.theint@theint-academy.edu</strong>. Inviolable Role: <span className="text-[#964261] font-bold">Admin Master</span>.
                         </div>
-                        <div className="w-full bg-surface-container-lowest h-2 rounded-full overflow-hidden">
-                          <div className="bg-primary h-full w-full transition-all duration-700"></div>
+                        <div className="w-full bg-white h-2 rounded-full overflow-hidden border border-[#f5e4e7]">
+                          <div className="bg-[#f48fb1] h-full w-full transition-all duration-700" />
                         </div>
                         <div className="mt-2 text-right">
-                          <span className="font-label-sm text-label-sm text-primary font-bold">
-                            Enforcing immediate transition to ADM-DASH-01...
-                          </span>
+                          <button
+                            type="button"
+                            onClick={() => onNavigateScreen('ADM-01-PORTAL')}
+                            className="text-xs font-['Quicksand'] font-bold text-[#964261] hover:text-[#f48fb1] underline cursor-pointer"
+                          >
+                            Proceeding to ADM-DASH-01 →
+                          </button>
                         </div>
                       </div>
                     )}
                   </div>
 
                   {/* Academic Integrity Note Card */}
-                  <div className="bg-surface-container-low rounded-xl p-space-md shadow-sm">
-                    <div className="flex gap-space-xs items-start">
-                      <span className="material-symbols-outlined text-secondary text-[22px]">
+                  <div className="bg-white rounded-3xl border border-[#fbeaec] shadow-[0_4px_16px_rgba(244,143,177,0.08)] p-4">
+                    <div className="flex gap-3 items-start">
+                      <span className="material-symbols-outlined text-[#81d4fa] text-[22px] shrink-0 bg-[#22191b] text-white rounded-full p-0.5">
                         policy
                       </span>
-                      <div>
-                        <h2 className="font-label-lg text-label-lg text-on-surface font-bold">
+                      <div className="text-xs">
+                        <h3 className="font-['Quicksand'] font-bold text-[#22191b]">
                           Strict Role Isolation Guarantee
-                        </h2>
-                        <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">
-                          Zero multi-tenancy leakage. Unverified registrations are quarantined
-                          instantly at AUTH-02. Verified accounts route without prompting.
+                        </h3>
+                        <p className="text-[#534247] mt-0.5 font-['Nunito_Sans']">
+                          Zero multi-tenancy leakage. Protected student &amp; admin routes require cryptographic token validation.
                         </p>
                       </div>
                     </div>
@@ -1572,26 +1396,22 @@ export const AuthScreens: React.FC<AuthScreensProps> = ({
       )}
 
       {/* Institutional Auth Footer */}
-      <footer className="w-full bg-surface-container-low shadow-[0_-1px_6px_rgba(45,37,41,0.02)] py-space-lg pb-24">
-        <div className="max-w-7xl mx-auto px-margin flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant">
-          <div className="flex flex-col sm:flex-row items-center gap-space-xs sm:gap-space-md text-center sm:text-left">
-            <span className="font-body-sm text-body-sm">
-              © 2024 Teacher Theint English Academy. All institutional rights reserved.
-            </span>
-            <span className="hidden sm:inline text-outline-variant">•</span>
-            <span className="font-body-sm text-body-sm text-tertiary">
-              Accredited Modern Language Institute
-            </span>
+      <footer className="w-full bg-white border-t border-[#fbeaec] py-6 pb-24 shadow-[0_-2px_10px_rgba(244,143,177,0.04)] font-['Quicksand']">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[#534247]">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
+            <span>© 2024 Teacher Theint English Academy. All rights reserved.</span>
+            <span className="hidden sm:inline text-[#d8c1c6]">•</span>
+            <span className="text-[#964261] font-bold">Pastel Rainbow Academy</span>
           </div>
-          <div className="flex items-center gap-space-md font-body-sm text-body-sm">
-            <span className="hover:text-primary transition-colors cursor-pointer">
+          <div className="flex items-center gap-4 font-semibold">
+            <span className="hover:text-[#f48fb1] transition-colors cursor-pointer">
               Privacy Policy
             </span>
-            <span className="hover:text-primary transition-colors cursor-pointer">
+            <span className="hover:text-[#f48fb1] transition-colors cursor-pointer">
               Terms of Service
             </span>
-            <span className="hover:text-primary transition-colors cursor-pointer">
-              Support Desk
+            <span className="hover:text-[#f48fb1] transition-colors cursor-pointer">
+              Help Center
             </span>
           </div>
         </div>

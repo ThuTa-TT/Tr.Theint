@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { ScreenId } from '../../../types/navigation';
+import { TR_THEINT_LOGO_URL } from '../../navigation/BrandLogo';
 
 interface CourseItem {
   id: string;
@@ -187,17 +188,17 @@ export const CourseCatalogPage: React.FC<CourseCatalogPageProps> = ({ onNavigate
   }, [currentTrack, currentAccess, currentSearch, qaState]);
 
   return (
-    <div className="flex flex-col w-full space-y-10">
+    <div className="flex flex-col w-full space-y-10 font-['Nunito_Sans']">
       {/* Toast Notification for Free Course Instant Access */}
       {toastMessage && (
         <div className="fixed bottom-24 right-8 z-50 animate-bounce">
-          <div className="p-4 rounded-xl bg-surface-container-lowest border border-outline-variant shadow-xl flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-on-secondary">
+          <div className="p-4 rounded-2xl bg-white border border-[#fbeaec] shadow-[0_8px_30px_rgba(244,143,177,0.25)] flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-[#81d4fa] flex items-center justify-center text-[#22191b] shadow-xs">
               <span className="material-symbols-outlined text-[18px]">lock_open</span>
             </div>
             <div>
-              <p className="text-xs font-bold text-on-surface">{toastMessage}</p>
-              <p className="text-[11px] text-on-surface-variant">
+              <p className="text-xs font-bold text-[#22191b] font-['Quicksand']">{toastMessage}</p>
+              <p className="text-[11px] text-[#534247]">
                 Immediate instant access granted under Teacher Theint Academy rules.
               </p>
             </div>
@@ -206,34 +207,34 @@ export const CourseCatalogPage: React.FC<CourseCatalogPageProps> = ({ onNavigate
       )}
 
       {/* Discovery Context Banner */}
-      <section className="w-full bg-surface-container-low/60 py-space-xl px-margin rounded-2xl border border-outline-variant/40">
-        <div className="max-w-7xl mx-auto flex flex-col gap-space-lg">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
-            <div className="max-w-3xl flex flex-col gap-space-2xs">
-              <div className="inline-flex items-center gap-space-xs self-start px-space-xs py-space-2xs rounded-full bg-secondary-fixed text-on-secondary-fixed text-label-sm font-label-sm uppercase tracking-wider">
+      <section className="w-full bg-[#fff0f2] py-8 sm:py-10 px-6 sm:px-10 rounded-3xl border border-[#fbeaec] shadow-[0_4px_20px_rgba(244,143,177,0.08)]">
+        <div className="max-w-7xl mx-auto flex flex-col gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="max-w-3xl flex flex-col gap-2">
+              <div className="inline-flex items-center gap-2 self-start px-3.5 py-1 rounded-full bg-white text-[#964261] border border-[#f5e4e7] text-xs font-['Quicksand'] font-bold shadow-2xs">
                 <span
-                  className="material-symbols-outlined text-[16px] text-primary"
+                  className="material-symbols-outlined text-[16px] text-[#f48fb1]"
                   style={{ fontVariationSettings: "'FILL' 1" }}
                 >
                   auto_stories
                 </span>
                 Academic Curriculum Standard
               </div>
-              <h1 className="font-headline-display text-headline-display text-on-surface tracking-tight text-3xl sm:text-4xl lg:text-[44px]">
+              <h1 className="font-['Quicksand'] font-bold text-[#22191b] tracking-tight text-3xl sm:text-4xl lg:text-[42px]">
                 Explore English Courses
               </h1>
-              <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl text-[15px] sm:text-base">
+              <p className="text-[#534247] max-w-2xl text-[15px] sm:text-base leading-relaxed">
                 Discover structured academic tracks and level-based curricula designed by Teacher Theint
                 English Academy. Master real-world communicative fluency with guided progressions.
               </p>
             </div>
 
             {/* QA State Switcher Demonstration Hub */}
-            <div className="flex flex-col items-start md:items-end gap-space-2xs bg-surface-container-lowest p-space-xs rounded-xl shadow-sm border border-outline-variant/30">
-              <span className="font-label-sm text-label-sm text-tertiary uppercase tracking-wider px-space-xs text-[11px]">
+            <div className="flex flex-col items-start md:items-end gap-2 bg-white p-3 rounded-2xl shadow-sm border border-[#fbeaec]">
+              <span className="font-['Quicksand'] font-bold text-[#964261] uppercase tracking-wider px-2 text-[11px]">
                 Audit QA State Mock
               </span>
-              <div className="inline-flex items-center bg-surface-container-high p-space-2xs rounded-lg gap-space-2xs">
+              <div className="inline-flex items-center bg-[#fff8f8] p-1 rounded-full gap-1 border border-[#f5e4e7]">
                 {(
                   [
                     { key: 'populated', label: 'Populated' },
@@ -248,10 +249,10 @@ export const CourseCatalogPage: React.FC<CourseCatalogPageProps> = ({ onNavigate
                       key={key}
                       type="button"
                       onClick={() => handleQaStateChange(key)}
-                      className={`px-space-xs py-space-2xs rounded font-label-md text-label-md transition-all text-xs cursor-pointer ${
+                      className={`px-3 py-1 rounded-full font-['Quicksand'] font-bold transition-all text-xs cursor-pointer ${
                         isActive
-                          ? 'bg-surface-container-lowest text-primary shadow-sm font-semibold'
-                          : 'text-on-surface-variant hover:text-on-surface'
+                          ? 'bg-[#f48fb1] text-white shadow-2xs'
+                          : 'text-[#534247] hover:text-[#22191b]'
                       }`}
                     >
                       {label}
@@ -263,11 +264,11 @@ export const CourseCatalogPage: React.FC<CourseCatalogPageProps> = ({ onNavigate
           </div>
 
           {/* Dual Search & Comprehensive Filter Engine */}
-          <div className="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-md border border-outline-variant/30">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-sm items-center">
+          <div className="bg-white p-5 sm:p-6 rounded-3xl shadow-[0_4px_16px_rgba(244,143,177,0.06)] flex flex-col gap-5 border border-[#fbeaec]">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
               {/* Keyword Search */}
               <div className="lg:col-span-6 relative">
-                <span className="material-symbols-outlined absolute left-space-sm top-1/2 -translate-y-1/2 text-tertiary text-[20px]">
+                <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[#f48fb1] text-[20px]">
                   search
                 </span>
                 <input
@@ -278,16 +279,16 @@ export const CourseCatalogPage: React.FC<CourseCatalogPageProps> = ({ onNavigate
                     if (qaState !== 'populated') setQaState('populated');
                   }}
                   placeholder="Search courses by topic, track or skill..."
-                  className="w-full pl-11 pr-space-md py-space-xs rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest transition-colors border border-outline-variant/30"
+                  className="w-full pl-11 pr-4 py-2.5 rounded-full bg-[#fff8f8] text-[#22191b] placeholder:text-[#534247]/60 focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#f48fb1]/40 transition-all border border-[#f5e4e7] text-sm"
                 />
               </div>
 
               {/* Access Type Toggle */}
-              <div className="lg:col-span-4 flex items-center gap-space-2xs bg-surface-container-low p-1 rounded-lg border border-outline-variant/30">
+              <div className="lg:col-span-4 flex items-center gap-1 bg-[#fff0f2] p-1 rounded-full border border-[#fbeaec]">
                 {(
                   [
                     { key: 'all', label: 'All Access' },
-                    { key: 'free', label: 'Free (Zero-Enroll)' },
+                    { key: 'free', label: 'Free (Instant)' },
                     { key: 'paid', label: 'Paid Tuition' },
                   ] as const
                 ).map(({ key, label }) => {
@@ -297,10 +298,10 @@ export const CourseCatalogPage: React.FC<CourseCatalogPageProps> = ({ onNavigate
                       key={key}
                       type="button"
                       onClick={() => handleAccessChange(key)}
-                      className={`flex-1 py-space-2xs text-center rounded font-label-md text-label-md transition-all text-xs cursor-pointer ${
+                      className={`flex-1 py-1.5 text-center rounded-full font-['Quicksand'] font-bold transition-all text-xs cursor-pointer ${
                         isActive
-                          ? 'bg-surface-container-lowest text-primary shadow-sm font-semibold'
-                          : 'text-on-surface-variant hover:text-on-surface'
+                          ? 'bg-[#f48fb1] text-white shadow-2xs'
+                          : 'text-[#534247] hover:text-[#22191b]'
                       }`}
                     >
                       {label}
@@ -314,20 +315,20 @@ export const CourseCatalogPage: React.FC<CourseCatalogPageProps> = ({ onNavigate
                 <button
                   type="button"
                   onClick={resetAllFilters}
-                  className="w-full lg:w-auto inline-flex items-center justify-center gap-space-2xs px-space-sm py-space-xs rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface-variant font-label-md text-label-md transition-colors text-xs cursor-pointer"
+                  className="w-full lg:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full bg-[#fff8f8] hover:bg-[#fff0f2] text-[#534247] hover:text-[#964261] font-['Quicksand'] font-bold border border-[#f5e4e7] transition-colors text-xs cursor-pointer"
                 >
-                  <span className="material-symbols-outlined text-[18px]">restart_alt</span>
+                  <span className="material-symbols-outlined text-[16px]">restart_alt</span>
                   Reset Filters
                 </button>
               </div>
             </div>
 
             {/* Track Hierarchy Carousel/Tab Selector */}
-            <div className="flex flex-col gap-space-2xs pt-1">
-              <span className="font-label-sm text-label-sm text-tertiary uppercase tracking-wider text-[11px]">
+            <div className="flex flex-col gap-2 pt-1 border-t border-[#fbeaec]">
+              <span className="font-['Quicksand'] font-bold text-[#534247] uppercase tracking-wider text-[11px]">
                 Approved Academic Tracks
               </span>
-              <div className="flex items-center gap-space-xs overflow-x-auto pb-space-2xs no-scrollbar">
+              <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
                 {TRACKS_LIST.map((track) => {
                   const isSelected = currentTrack === track;
                   return (
@@ -335,10 +336,10 @@ export const CourseCatalogPage: React.FC<CourseCatalogPageProps> = ({ onNavigate
                       key={track}
                       type="button"
                       onClick={() => handleTrackChange(track)}
-                      className={`px-space-sm py-space-2xs rounded-lg font-label-md text-label-md whitespace-nowrap transition-all text-xs cursor-pointer ${
+                      className={`px-4 py-1.5 rounded-full font-['Quicksand'] font-bold whitespace-nowrap transition-all text-xs cursor-pointer ${
                         isSelected
-                          ? 'bg-primary text-on-primary font-semibold shadow-xs'
-                          : 'bg-surface-container text-on-surface-variant hover:bg-surface-variant'
+                          ? 'bg-[#f48fb1] text-white shadow-2xs'
+                          : 'bg-[#fff8f8] text-[#534247] hover:bg-[#fff0f2] hover:text-[#22191b] border border-[#f5e4e7]'
                       }`}
                     >
                       {track === 'All' ? 'All Tracks' : track}
@@ -353,34 +354,34 @@ export const CourseCatalogPage: React.FC<CourseCatalogPageProps> = ({ onNavigate
 
       {/* Active Results & Filter Chips */}
       <section className="w-full">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-space-sm">
-          <div className="flex items-center gap-space-xs">
-            <span className="material-symbols-outlined text-primary text-[20px]">menu_book</span>
-            <span className="font-headline-sm text-headline-sm text-on-surface font-semibold text-base sm:text-lg">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-2.5">
+            <span className="material-symbols-outlined text-[#f48fb1] text-[22px]">menu_book</span>
+            <span className="font-['Quicksand'] font-bold text-[#22191b] text-base sm:text-lg">
               Showing {filteredCourses.length} published courses
             </span>
           </div>
 
-          <div className="flex flex-wrap items-center gap-space-2xs text-xs">
-            <span className="font-label-sm text-label-sm text-tertiary uppercase tracking-wider mr-space-2xs">
+          <div className="flex flex-wrap items-center gap-2 text-xs font-['Quicksand'] font-bold">
+            <span className="text-[#534247] uppercase tracking-wider text-[11px] mr-1">
               Active:
             </span>
-            <span className="inline-flex items-center gap-space-2xs px-space-xs py-space-2xs rounded-md bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md font-semibold">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#81d4fa]/20 text-[#005d79] border border-[#81d4fa]/30">
               <span>Track: {currentTrack}</span>
             </span>
-            <span className="inline-flex items-center gap-space-2xs px-space-xs py-space-2xs rounded-md bg-surface-container text-on-surface-variant font-label-md text-label-md">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fff0f2] text-[#964261] border border-[#f5e4e7]">
               <span>
                 Access:{' '}
                 {currentAccess === 'all'
                   ? 'All'
                   : currentAccess === 'free'
-                  ? 'Free (Immediate Access)'
+                  ? 'Free (Instant Access)'
                   : 'Paid Tuition'}
               </span>
             </span>
-            <span className="inline-flex items-center gap-space-2xs px-space-xs py-space-2xs rounded-md bg-surface-container-high text-tertiary font-label-md text-label-md">
+            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#a5d6a7]/20 text-[#2e6830] border border-[#a5d6a7]/30">
               <span
-                className="material-symbols-outlined text-[14px] text-primary"
+                className="material-symbols-outlined text-[14px] text-[#2e6830]"
                 style={{ fontVariationSettings: "'FILL' 1" }}
               >
                 check_circle
@@ -396,17 +397,17 @@ export const CourseCatalogPage: React.FC<CourseCatalogPageProps> = ({ onNavigate
         <div className="max-w-7xl mx-auto">
           {/* Skeleton State */}
           {qaState === 'skeleton' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {[1, 2, 3].map((idx) => (
                 <div
                   key={idx}
-                  className="bg-surface-container-lowest rounded-xl p-space-md flex flex-col gap-space-md animate-pulse border border-outline-variant/30"
+                  className="bg-white rounded-3xl p-6 flex flex-col gap-4 animate-pulse border border-[#fbeaec]"
                 >
-                  <div className="h-44 bg-surface-container-high rounded-lg w-full"></div>
-                  <div className="h-6 bg-surface-container-high rounded w-3/4"></div>
-                  <div className="h-4 bg-surface-container-high rounded w-full"></div>
-                  <div className="h-4 bg-surface-container-high rounded w-2/3"></div>
-                  <div className="h-10 bg-surface-container-high rounded-lg w-full mt-auto"></div>
+                  <div className="h-48 bg-[#fff0f2] rounded-2xl w-full"></div>
+                  <div className="h-6 bg-[#fff0f2] rounded-md w-3/4"></div>
+                  <div className="h-4 bg-[#fff0f2] rounded w-full"></div>
+                  <div className="h-4 bg-[#fff0f2] rounded w-2/3"></div>
+                  <div className="h-11 bg-[#fff0f2] rounded-full w-full mt-auto"></div>
                 </div>
               ))}
             </div>
@@ -414,60 +415,60 @@ export const CourseCatalogPage: React.FC<CourseCatalogPageProps> = ({ onNavigate
 
           {/* Empty State */}
           {(qaState === 'empty' || (qaState === 'populated' && filteredCourses.length === 0)) && (
-            <div className="flex flex-col items-center justify-center text-center p-space-3xl bg-surface-container-lowest rounded-2xl shadow-sm my-space-md border border-outline-variant/30">
-              <div className="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-primary mb-space-sm">
+            <div className="flex flex-col items-center justify-center text-center p-12 sm:p-16 bg-white rounded-3xl shadow-[0_4px_20px_rgba(244,143,177,0.08)] my-6 border border-[#fbeaec]">
+              <div className="w-16 h-16 rounded-full bg-[#fff0f2] flex items-center justify-center text-[#f48fb1] mb-4">
                 <span className="material-symbols-outlined text-[32px]">manage_search</span>
               </div>
-              <h3 className="font-headline-lg text-headline-lg text-on-surface mb-space-2xs text-2xl font-serif">
+              <h3 className="font-['Quicksand'] font-bold text-[#22191b] mb-2 text-2xl">
                 No matching courses found
               </h3>
-              <p className="font-body-md text-body-md text-on-surface-variant max-w-md mb-space-md text-sm">
+              <p className="text-[#534247] max-w-md mb-6 text-sm">
                 We could not find published courses matching your criteria. Try adjusting your track filter
                 or search keyword.
               </p>
               <button
                 type="button"
                 onClick={resetAllFilters}
-                className="inline-flex items-center gap-space-2xs px-space-md py-space-xs rounded-lg bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container transition-colors shadow-sm text-sm cursor-pointer"
+                className="btn-tactile-primary px-6 py-2.5 rounded-full text-xs font-['Quicksand'] font-bold cursor-pointer"
               >
                 <span className="material-symbols-outlined text-[18px]">refresh</span>
-                Reset all filters
+                <span>Reset all filters</span>
               </button>
             </div>
           )}
 
           {/* Populated Course Grid (3-column layout) */}
           {qaState !== 'skeleton' && filteredCourses.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {filteredCourses.map((course) => (
                 <article
                   key={course.id}
-                  className="course-card flex flex-col bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden group border border-outline-variant/30"
+                  className="course-card flex flex-col bg-white rounded-3xl shadow-[0_4px_20px_rgba(244,143,177,0.1)] hover:shadow-[0_12px_32px_rgba(244,143,177,0.2)] hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group border border-[#fbeaec]"
                 >
-                  <div className="relative h-48 w-full overflow-hidden bg-surface-container">
+                  <div className="relative h-52 w-full overflow-hidden bg-[#fff0f2]">
                     <img
                       src={course.image}
                       alt={course.imageAlt}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-space-xs left-space-xs flex flex-wrap gap-space-2xs">
-                      <span className="px-space-xs py-space-2xs rounded bg-surface-container-lowest/90 backdrop-blur text-primary font-label-sm text-label-sm uppercase tracking-wider font-bold text-[10px]">
+                    <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
+                      <span className="px-3 py-1 rounded-full bg-white/95 backdrop-blur text-[#964261] font-['Quicksand'] font-bold uppercase tracking-wider text-[11px] shadow-xs border border-[#f5e4e7]">
                         {course.track}
                       </span>
                     </div>
 
                     {course.access === 'free' && (
-                      <div className="absolute top-space-xs right-space-xs">
-                        <span className="px-space-xs py-space-2xs rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold uppercase tracking-wide flex items-center gap-1 shadow-sm text-[10px]">
+                      <div className="absolute top-3 right-3">
+                        <span className="px-3 py-1 rounded-full bg-[#81d4fa] text-[#22191b] font-['Quicksand'] font-bold uppercase tracking-wide flex items-center gap-1 shadow-xs text-[11px]">
                           <span className="material-symbols-outlined text-[14px]">lock_open</span> Free
                           Access
                         </span>
                       </div>
                     )}
 
-                    <div className="absolute bottom-space-xs left-space-xs right-space-xs">
-                      <span className="inline-flex items-center gap-space-2xs px-space-xs py-space-2xs rounded bg-inverse-surface/85 backdrop-blur text-inverse-on-surface font-label-sm text-label-sm font-medium text-[11px]">
-                        <span className="material-symbols-outlined text-[14px] text-primary-fixed">
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#22191b]/85 backdrop-blur text-white font-['Quicksand'] font-bold text-[11px]">
+                        <span className="material-symbols-outlined text-[14px] text-[#ffe082]">
                           stairs
                         </span>
                         {course.level}
@@ -475,32 +476,32 @@ export const CourseCatalogPage: React.FC<CourseCatalogPageProps> = ({ onNavigate
                     </div>
                   </div>
 
-                  <div className="p-space-md flex flex-col flex-1 justify-between gap-space-md">
-                    <div className="flex flex-col gap-space-xs">
-                      <h2 className="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors text-xl font-serif">
+                  <div className="p-6 flex flex-col flex-1 justify-between gap-5">
+                    <div className="flex flex-col gap-2">
+                      <h2 className="font-['Quicksand'] font-bold text-[#22191b] group-hover:text-[#f48fb1] transition-colors text-lg line-clamp-2 leading-snug">
                         {course.title}
                       </h2>
-                      <p className="font-body-md text-body-md text-on-surface-variant line-clamp-3 text-xs leading-relaxed">
+                      <p className="text-[#534247] line-clamp-3 text-xs leading-relaxed">
                         {course.description}
                       </p>
                     </div>
 
-                    <div className="flex flex-col gap-space-sm pt-space-xs">
-                      <div className="flex items-center gap-space-xs text-on-surface-variant font-label-md text-label-md bg-surface-container-low px-space-xs py-space-2xs rounded-lg text-xs">
-                        <span className="material-symbols-outlined text-[16px] text-primary">
+                    <div className="flex flex-col gap-4 pt-1">
+                      <div className="flex items-center gap-2 text-[#534247] font-['Quicksand'] font-bold bg-[#fff8f8] px-3 py-2 rounded-2xl text-xs border border-[#f5e4e7]">
+                        <span className="material-symbols-outlined text-[16px] text-[#f48fb1]">
                           view_timeline
                         </span>
                         <span>{course.structure}</span>
                       </div>
 
-                      <div className="flex items-center justify-between gap-space-sm pt-space-xs border-t border-outline-variant/30">
+                      <div className="flex items-center justify-between gap-3 pt-3 border-t border-[#fbeaec]">
                         <div className="flex flex-col">
-                          <span className="font-label-sm text-label-sm text-tertiary uppercase tracking-wide text-[10px]">
+                          <span className="text-[#534247] uppercase font-['Quicksand'] font-bold tracking-wide text-[10px]">
                             {course.access === 'free' ? 'Course Access' : 'One-time tuition'}
                           </span>
                           <span
-                            className={`font-headline-sm text-headline-sm font-bold text-base ${
-                              course.access === 'free' ? 'text-secondary' : 'text-primary'
+                            className={`font-['Quicksand'] font-bold text-base ${
+                              course.access === 'free' ? 'text-[#006685]' : 'text-[#964261]'
                             }`}
                           >
                             {course.tuition}
@@ -511,19 +512,19 @@ export const CourseCatalogPage: React.FC<CourseCatalogPageProps> = ({ onNavigate
                           <button
                             type="button"
                             onClick={() => onNavigateScreen('PUB-03-COURSE-DETAIL')}
-                            className="inline-flex items-center gap-space-2xs px-space-sm py-space-xs rounded-lg bg-secondary text-on-secondary font-label-lg text-label-lg hover:bg-secondary/90 transition-colors shadow-sm text-xs font-semibold cursor-pointer"
+                            className="btn-tactile-secondary px-4 py-2 rounded-full font-['Quicksand'] font-bold text-xs inline-flex items-center gap-1.5 cursor-pointer"
                           >
                             <span>Start Learning</span>
-                            <span className="material-symbols-outlined text-[18px]">play_circle</span>
+                            <span className="material-symbols-outlined text-[16px]">play_circle</span>
                           </button>
                         ) : (
                           <button
                             type="button"
                             onClick={() => onNavigateScreen('PUB-03-COURSE-DETAIL')}
-                            className="inline-flex items-center gap-space-2xs px-space-sm py-space-xs rounded-lg bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container transition-colors shadow-sm text-xs font-semibold cursor-pointer"
+                            className="btn-tactile-primary px-4 py-2 rounded-full font-['Quicksand'] font-bold text-xs inline-flex items-center gap-1.5 cursor-pointer"
                           >
                             <span>Explore Course</span>
-                            <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
                           </button>
                         )}
                       </div>
@@ -537,65 +538,65 @@ export const CourseCatalogPage: React.FC<CourseCatalogPageProps> = ({ onNavigate
       </section>
 
       {/* Educational Path Guidance Matrix (Answering 'Which course should I choose?') */}
-      <section className="w-full bg-surface-container-low/40 py-space-2xl px-margin rounded-2xl border border-outline-variant/30">
-        <div className="max-w-7xl mx-auto flex flex-col gap-space-lg">
-          <div className="flex flex-col gap-space-2xs">
-            <span className="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold text-xs">
+      <section className="w-full bg-[#fff0f2]/60 py-10 px-6 sm:px-10 rounded-3xl border border-[#fbeaec]">
+        <div className="max-w-7xl mx-auto flex flex-col gap-6">
+          <div className="flex flex-col gap-2">
+            <span className="font-['Quicksand'] font-bold uppercase tracking-wider text-[#964261] text-xs">
               Curricular Architecture
             </span>
-            <h2 className="font-headline-xl text-headline-xl text-on-surface text-2xl sm:text-3xl font-serif">
+            <h2 className="font-['Quicksand'] font-bold text-[#22191b] text-2xl sm:text-3xl">
               Which track and course should you choose?
             </h2>
-            <p className="font-body-md text-body-md text-on-surface-variant max-w-3xl text-sm leading-relaxed">
+            <p className="text-[#534247] max-w-3xl text-sm leading-relaxed">
               At Teacher Theint English Academy, all curricula follow a strict academic governance system:{' '}
-              <span className="font-semibold text-on-surface">
+              <span className="font-bold text-[#22191b]">
                 Track → Course → Level → Module → Lesson → Learning Item
               </span>
               .
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {/* Guidance Item 1 */}
-            <div className="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs border border-outline-variant/30">
-              <div className="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+            <div className="p-6 rounded-3xl bg-white shadow-[0_4px_16px_rgba(244,143,177,0.06)] flex flex-col gap-3 border border-[#fbeaec]">
+              <div className="w-11 h-11 rounded-2xl bg-[#81d4fa]/20 flex items-center justify-center text-[#006685]">
                 <span className="material-symbols-outlined text-[24px]">chat_bubble_outline</span>
               </div>
-              <h3 className="font-headline-sm text-headline-sm text-on-surface font-semibold text-base">
+              <h3 className="font-['Quicksand'] font-bold text-[#22191b] text-base">
                 Immediate Speaking Confidence
               </h3>
-              <p className="font-body-sm text-body-sm text-on-surface-variant text-xs leading-relaxed">
-                Choose our <span className="font-semibold text-primary">Daily Conversation</span> or{' '}
-                <span className="font-semibold text-primary">General English</span> tracks. Start with free
+              <p className="text-[#534247] text-xs leading-relaxed">
+                Choose our <span className="font-bold text-[#964261]">Daily Conversation</span> or{' '}
+                <span className="font-bold text-[#964261]">General English</span> tracks. Start with free
                 foundation modules to build spoken fluency without delay.
               </p>
             </div>
 
             {/* Guidance Item 2 */}
-            <div className="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs border border-outline-variant/30">
-              <div className="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+            <div className="p-6 rounded-3xl bg-white shadow-[0_4px_16px_rgba(244,143,177,0.06)] flex flex-col gap-3 border border-[#fbeaec]">
+              <div className="w-11 h-11 rounded-2xl bg-[#ffe082]/30 flex items-center justify-center text-[#725c06]">
                 <span className="material-symbols-outlined text-[24px]">work_outline</span>
               </div>
-              <h3 className="font-headline-sm text-headline-sm text-on-surface font-semibold text-base">
+              <h3 className="font-['Quicksand'] font-bold text-[#22191b] text-base">
                 Career Mobility &amp; Corporate Fluency
               </h3>
-              <p className="font-body-sm text-body-sm text-on-surface-variant text-xs leading-relaxed">
-                Select <span className="font-semibold text-primary">Business English</span>,{' '}
-                <span className="font-semibold text-primary">Hotel English</span>, or{' '}
-                <span className="font-semibold text-primary">Interview English</span> for structured
+              <p className="text-[#534247] text-xs leading-relaxed">
+                Select <span className="font-bold text-[#964261]">Business English</span>,{' '}
+                <span className="font-bold text-[#964261]">Hotel English</span>, or{' '}
+                <span className="font-bold text-[#964261]">Interview English</span> for structured
                 professional scenarios.
               </p>
             </div>
 
             {/* Guidance Item 3 */}
-            <div className="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs border border-outline-variant/30">
-              <div className="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+            <div className="p-6 rounded-3xl bg-white shadow-[0_4px_16px_rgba(244,143,177,0.06)] flex flex-col gap-3 border border-[#fbeaec]">
+              <div className="w-11 h-11 rounded-2xl bg-[#a5d6a7]/20 flex items-center justify-center text-[#2e6830]">
                 <span className="material-symbols-outlined text-[24px]">verified_user</span>
               </div>
-              <h3 className="font-headline-sm text-headline-sm text-on-surface font-semibold text-base">
+              <h3 className="font-['Quicksand'] font-bold text-[#22191b] text-base">
                 Zero-Risk Free Courses
               </h3>
-              <p className="font-body-sm text-body-sm text-on-surface-variant text-xs leading-relaxed">
+              <p className="text-[#534247] text-xs leading-relaxed">
                 Free courses do not require payment or student enrollment approval. Immediate instant
                 access is provided upon clicking &apos;Start Learning&apos;.
               </p>
@@ -606,16 +607,16 @@ export const CourseCatalogPage: React.FC<CourseCatalogPageProps> = ({ onNavigate
 
       {/* Academic Governance Notice Sub-Panel */}
       <section className="w-full">
-        <div className="max-w-7xl mx-auto rounded-xl bg-surface-container-high/60 p-space-md flex flex-col md:flex-row items-center justify-between gap-space-md border border-outline-variant/30">
-          <div className="flex items-center gap-space-md">
-            <div className="w-12 h-12 rounded-full bg-surface-container-lowest flex-shrink-0 flex items-center justify-center text-primary shadow-sm">
+        <div className="max-w-7xl mx-auto rounded-3xl bg-white p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border border-[#fbeaec] shadow-[0_4px_16px_rgba(244,143,177,0.08)]">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-[#fff0f2] flex-shrink-0 flex items-center justify-center text-[#f48fb1]">
               <span className="material-symbols-outlined text-[26px]">gavel</span>
             </div>
             <div className="flex flex-col">
-              <h4 className="font-headline-sm text-headline-sm text-on-surface font-semibold text-base">
+              <h4 className="font-['Quicksand'] font-bold text-[#22191b] text-base">
                 Institutional Quality Assurance Framework
               </h4>
-              <p className="font-body-sm text-body-sm text-on-surface-variant max-w-2xl text-xs leading-relaxed">
+              <p className="text-[#534247] max-w-2xl text-xs leading-relaxed">
                 Course publications adhere strictly to verified academic standards. Content items are
                 authored by faculty, reviewed through stage-gate quality checks, and structured logically
                 inside validated pedagogical modules.
@@ -623,9 +624,9 @@ export const CourseCatalogPage: React.FC<CourseCatalogPageProps> = ({ onNavigate
             </div>
           </div>
 
-          <div className="flex items-center gap-space-xs flex-shrink-0">
-            <span className="inline-flex items-center gap-space-2xs text-label-sm font-label-sm text-tertiary bg-surface-container-lowest px-space-sm py-space-2xs rounded-lg shadow-sm text-xs font-semibold">
-              <span className="material-symbols-outlined text-[16px] text-primary">policy</span>
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <span className="inline-flex items-center gap-1.5 font-['Quicksand'] font-bold text-[#725c06] bg-[#ffe082]/20 border border-[#ffe082]/40 px-3.5 py-1.5 rounded-full text-xs shadow-2xs">
+              <span className="material-symbols-outlined text-[16px] text-[#725c06]">policy</span>
               Stage-Gate Verified
             </span>
           </div>
@@ -633,122 +634,125 @@ export const CourseCatalogPage: React.FC<CourseCatalogPageProps> = ({ onNavigate
       </section>
 
       {/* Academy Footer */}
-      <footer className="w-full bg-surface-container-low shadow-[0_-1px_6px_rgba(0,0,0,0.02)] mt-space-3xl rounded-2xl p-space-lg border border-outline-variant/30">
+      <footer className="w-full bg-[#fff0f2] mt-6 rounded-3xl p-8 sm:p-12 border border-[#fbeaec] shadow-[0_4px_20px_rgba(244,143,177,0.06)]">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-xl">
-            <div className="lg:col-span-2 flex flex-col gap-space-sm">
-              <div className="flex items-center gap-space-xs">
-                <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary">
-                  <span className="material-symbols-outlined text-[20px]">school</span>
-                </div>
-                <span className="font-headline-md text-headline-md text-primary font-bold text-lg font-serif">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+            <div className="lg:col-span-2 flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <img
+                  src={TR_THEINT_LOGO_URL}
+                  alt="Teacher Theint English"
+                  referrerPolicy="no-referrer"
+                  className="w-10 h-10 rounded-full object-cover border-2 border-[#f48fb1] bg-white shadow-xs"
+                />
+                <span className="font-['Quicksand'] font-bold text-[#22191b] text-lg">
                   Teacher Theint English Academy
                 </span>
               </div>
-              <p className="font-body-md text-body-md text-on-surface-variant max-w-sm text-xs leading-relaxed">
+              <p className="text-[#534247] max-w-sm text-xs leading-relaxed">
                 An elevated academic sanctuary dedicated to communicative fluency, IELTS mastery, and
                 professional English discourse for ambitious learners across Myanmar and worldwide.
               </p>
-              <div className="font-label-sm text-label-sm text-on-surface-variant/80 pt-space-xs text-[11px]">
+              <div className="text-[#534247]/80 text-[11px] font-medium">
                 Licensed Higher ESL Curriculum Standard • Yangon &amp; Remote
               </div>
             </div>
 
-            <div className="flex flex-col gap-space-xs text-xs">
-              <span className="font-label-md text-label-md uppercase tracking-wider text-primary font-bold mb-space-xs text-[11px]">
+            <div className="flex flex-col gap-2 text-xs">
+              <span className="font-['Quicksand'] font-bold uppercase tracking-wider text-[#964261] mb-1 text-[11px]">
                 Academic Tracks
               </span>
               <button
                 type="button"
                 onClick={() => handleTrackChange('General English')}
-                className="text-left text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
+                className="text-left text-[#534247] hover:text-[#f48fb1] transition-colors cursor-pointer"
               >
                 General Communicative English
               </button>
               <button
                 type="button"
                 onClick={() => handleTrackChange('Business English')}
-                className="text-left text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
+                className="text-left text-[#534247] hover:text-[#f48fb1] transition-colors cursor-pointer"
               >
                 Corporate &amp; Business Fluency
               </button>
               <button
                 type="button"
                 onClick={() => handleTrackChange('Daily Conversation')}
-                className="text-left text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
+                className="text-left text-[#534247] hover:text-[#f48fb1] transition-colors cursor-pointer"
               >
                 Daily Spoken Conversation
               </button>
               <button
                 type="button"
                 onClick={() => handleTrackChange('Interview English')}
-                className="text-left text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
+                className="text-left text-[#534247] hover:text-[#f48fb1] transition-colors cursor-pointer"
               >
                 Job Interview Confidence
               </button>
               <button
                 type="button"
                 onClick={() => handleTrackChange('School')}
-                className="text-left text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
+                className="text-left text-[#534247] hover:text-[#f48fb1] transition-colors cursor-pointer"
               >
                 Young Scholars &amp; School
               </button>
             </div>
 
-            <div className="flex flex-col gap-space-xs text-xs">
-              <span className="font-label-md text-label-md uppercase tracking-wider text-primary font-bold mb-space-xs text-[11px]">
+            <div className="flex flex-col gap-2 text-xs">
+              <span className="font-['Quicksand'] font-bold uppercase tracking-wider text-[#964261] mb-1 text-[11px]">
                 Academy &amp; Media
               </span>
               <button
                 type="button"
                 onClick={() => onNavigateScreen('PUB-05-ABOUT')}
-                className="text-left text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
+                className="text-left text-[#534247] hover:text-[#f48fb1] transition-colors cursor-pointer"
               >
                 Our Faculty &amp; Ethos
               </button>
               <button
                 type="button"
                 onClick={() => onNavigateScreen('PUB-04-BLOG')}
-                className="text-left text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
+                className="text-left text-[#534247] hover:text-[#f48fb1] transition-colors cursor-pointer"
               >
                 English Journal &amp; Grammar Blog
               </button>
               <button
                 type="button"
                 onClick={() => onNavigateScreen('PUB-03-COURSE-DETAIL')}
-                className="text-left text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
+                className="text-left text-[#534247] hover:text-[#f48fb1] transition-colors cursor-pointer"
               >
                 Placement Diagnostics &amp; Syllabus
               </button>
               <button
                 type="button"
                 onClick={() => onNavigateScreen('PUB-05-ABOUT')}
-                className="text-left text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
+                className="text-left text-[#534247] hover:text-[#f48fb1] transition-colors cursor-pointer"
               >
                 Accreditations &amp; Certificates
               </button>
             </div>
 
-            <div className="flex flex-col gap-space-xs text-xs">
-              <span className="font-label-md text-label-md uppercase tracking-wider text-primary font-bold mb-space-xs text-[11px]">
+            <div className="flex flex-col gap-2 text-xs">
+              <span className="font-['Quicksand'] font-bold uppercase tracking-wider text-[#964261] mb-1 text-[11px]">
                 Legal &amp; Notices
               </span>
-              <span className="text-on-surface-variant">Institutional Notice</span>
-              <span className="text-on-surface-variant">Academic Integrity Policy</span>
-              <span className="text-on-surface-variant">Terms of Enrollment</span>
-              <span className="text-on-surface-variant">Privacy Framework</span>
+              <span className="text-[#534247]">Institutional Notice</span>
+              <span className="text-[#534247]">Academic Integrity Policy</span>
+              <span className="text-[#534247]">Terms of Enrollment</span>
+              <span className="text-[#534247]">Privacy Framework</span>
             </div>
           </div>
 
-          <div className="mt-space-2xl pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm border-t border-outline-variant/30 text-xs text-on-surface-variant">
+          <div className="mt-8 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-[#fbeaec] text-xs text-[#534247]">
             <p>© 2025 Teacher Theint English Academy. All academic rights reserved.</p>
-            <div className="flex items-center gap-space-md">
-              <span className="flex items-center gap-space-2xs">
-                <span className="material-symbols-outlined text-[16px] text-primary">verified</span>
+            <div className="flex items-center gap-4 font-['Quicksand'] font-bold">
+              <span className="flex items-center gap-1.5 text-[#964261]">
+                <span className="material-symbols-outlined text-[16px] text-[#f48fb1]">verified</span>
                 Certified Teaching Standard
               </span>
-              <span className="flex items-center gap-space-2xs">
-                <span className="material-symbols-outlined text-[16px] text-primary">language</span>
+              <span className="flex items-center gap-1.5 text-[#534247]">
+                <span className="material-symbols-outlined text-[16px] text-[#81d4fa]">language</span>
                 Yangon • Global Online Cohorts
               </span>
             </div>

@@ -11,6 +11,7 @@ import { LessonPlayerScreen } from '../student/LessonPlayerScreen';
 import { AutoGradedExerciseScreen } from '../student/AutoGradedExerciseScreen';
 import { ExerciseResultScreen } from '../student/ExerciseResultScreen';
 import { ExerciseRetryScreen } from '../student/ExerciseRetryScreen';
+import { TR_THEINT_LOGO_URL } from '../../navigation/BrandLogo';
 
 interface PublicScreenProps {
   screenId: ScreenId;
@@ -140,21 +141,21 @@ export const PublicScreens: React.FC<PublicScreenProps> = ({
   }
 
   const activeNavMap: Record<string, PublicNavItem> = {
-    'PUB-02-COURSES': 'Courses',
-    'PUB-03-COURSE-DETAIL': 'Courses',
-    'STU-COURSE-03-STRUCTURE': 'Courses',
-    'STU-FREE-01': 'Courses',
-    'STU-LEARN-01': 'Courses',
-    'STU-LESSON-01': 'Courses',
-    'STU-EX-01': 'Courses',
-    'STU-PLACE-02': 'Courses',
-    'STU-EX-02': 'Courses',
-    'STU-EX-03': 'Courses',
+    'PUB-02-COURSES': 'Course',
+    'PUB-03-COURSE-DETAIL': 'Course',
+    'STU-COURSE-03-STRUCTURE': 'Course',
+    'STU-FREE-01': 'Course',
+    'STU-LEARN-01': 'Course',
+    'STU-LESSON-01': 'Course',
+    'STU-EX-01': 'Course',
+    'STU-PLACE-02': 'Course',
+    'STU-EX-02': 'Course',
+    'STU-EX-03': 'Course',
     'PUB-04-BLOG': 'Blog',
     'PUB-05-ABOUT': 'About',
   };
 
-  const activeNav = activeNavMap[screenId] || 'Courses';
+  const activeNav = activeNavMap[screenId] || 'Course';
 
   const filteredCourses =
     selectedTarget === 'All Targets'
@@ -162,7 +163,7 @@ export const PublicScreens: React.FC<PublicScreenProps> = ({
       : COURSES_DATA.filter((c) => c.target === selectedTarget);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FCFAF9] text-[#2D2529]">
+    <div className="min-h-screen flex flex-col bg-[#fff8f8] text-[#22191b] font-['Nunito_Sans']">
       <main className="max-w-[1440px] w-full mx-auto px-6 lg:px-12 py-8 space-y-12 flex-1 pb-24">
         {/* Canonical Home Page Navbar Reference (Matching Section 1 of Attached Home Page) */}
         <PublicNavbar
@@ -214,15 +215,15 @@ export const PublicScreens: React.FC<PublicScreenProps> = ({
         )}
 
         {screenId === 'PUB-04-BLOG' && (
-          <div className="space-y-8">
-            <div className="rounded-xl bg-white border border-[#E9DDE1] p-8 shadow-sm">
-              <span className="text-xs font-bold text-[#B75E78] uppercase tracking-wider">
+          <div className="space-y-8 animate-fade-in">
+            <div className="rounded-3xl bg-white border border-[#fbeaec] p-8 shadow-[0_4px_16px_rgba(244,143,177,0.12)]">
+              <span className="text-xs font-['Quicksand'] font-bold text-[#f48fb1] uppercase tracking-wider">
                 Educational Articles
               </span>
-              <h1 className="font-serif text-3xl text-[#2D2529] mt-1">
+              <h1 className="font-['Quicksand'] font-bold text-3xl text-[#22191b] mt-1">
                 Learning Guides &amp; Insights
               </h1>
-              <p className="text-sm text-[#766A70] mt-2">
+              <p className="text-sm text-[#534247] mt-2">
                 Practical language articles, grammar tips, and study strategies prepared by our
                 instructional team.
               </p>
@@ -232,21 +233,24 @@ export const PublicScreens: React.FC<PublicScreenProps> = ({
               {BLOG_ARTICLES.map((article) => (
                 <article
                   key={article.id}
-                  className="p-6 rounded-xl bg-white border border-[#E9DDE1] shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+                  className="p-6 rounded-3xl bg-white border border-[#fbeaec] shadow-[0_4px_16px_rgba(244,143,177,0.10)] hover:shadow-[0_8px_24px_rgba(244,143,177,0.18)] transition-all flex flex-col justify-between"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="px-2.5 py-0.5 rounded-full bg-[#F7F1F3] text-[#B75E78] text-[11px] font-semibold">
+                      <span className="px-3 py-1 rounded-full bg-[#fff0f2] text-[#964261] border border-[#f5e4e7] text-[11px] font-['Quicksand'] font-bold">
                         {article.category}
                       </span>
-                      <span className="text-[10px] text-[#766A70]">[Sample Article]</span>
+                      <span className="text-[10px] text-[#534247] font-medium">[Sample Article]</span>
                     </div>
-                    <h2 className="font-bold text-base text-[#2D2529]">{article.title}</h2>
-                    <p className="text-xs text-[#766A70] leading-relaxed">{article.excerpt}</p>
+                    <h2 className="font-['Quicksand'] font-bold text-base text-[#22191b]">{article.title}</h2>
+                    <p className="text-xs text-[#534247] leading-relaxed">{article.excerpt}</p>
                   </div>
-                  <div className="pt-6 mt-6 border-t border-[#E9DDE1] flex items-center justify-between text-xs text-[#766A70]">
+                  <div className="pt-6 mt-6 border-t border-[#f5e4e7] flex items-center justify-between text-xs text-[#534247]">
                     <span>Editorial Team • {article.readTime}</span>
-                    <span className="text-[#B75E78] font-bold">Read Guide →</span>
+                    <span className="text-[#f48fb1] font-['Quicksand'] font-bold hover:text-[#d87395] cursor-pointer inline-flex items-center gap-1">
+                      <span>Read Guide</span>
+                      <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
+                    </span>
                   </div>
                 </article>
               ))}
@@ -255,34 +259,37 @@ export const PublicScreens: React.FC<PublicScreenProps> = ({
         )}
 
         {screenId === 'PUB-05-ABOUT' && (
-          <section className="rounded-xl bg-white border border-[#E9DDE1] p-8 lg:p-12 shadow-sm">
+          <section className="rounded-3xl bg-white border border-[#fbeaec] p-8 lg:p-12 shadow-[0_4px_16px_rgba(244,143,177,0.12)] animate-fade-in">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
               <div className="lg:col-span-5 space-y-4">
-                <div className="p-6 rounded-xl bg-[#F7F1F3] border border-[#E9DDE1] space-y-4 text-center">
-                  <div className="w-20 h-20 mx-auto rounded-full bg-[#F3DDE3] border border-[#E9DDE1] flex items-center justify-center font-bold text-xl text-[#B75E78] shadow-sm">
-                    TE
-                  </div>
+                <div className="p-6 rounded-3xl bg-[#fff8f8] border border-[#fbeaec] space-y-4 text-center shadow-2xs">
+                  <img
+                    src={TR_THEINT_LOGO_URL}
+                    alt="Teacher Theint English"
+                    referrerPolicy="no-referrer"
+                    className="w-24 h-24 mx-auto rounded-full object-cover border-4 border-[#f48fb1] shadow-md bg-white"
+                  />
                   <div>
-                    <h2 className="font-bold text-base text-[#2D2529]">Teacher Theint English</h2>
-                    <p className="text-xs text-[#766A70]">
+                    <h2 className="font-['Quicksand'] font-bold text-lg text-[#22191b]">Teacher Theint English</h2>
+                    <p className="text-xs text-[#534247] font-medium">
                       English Teaching &amp; Learning Platform
                     </p>
                   </div>
-                  <div className="p-3 rounded-sm bg-white border border-[#E9DDE1] text-left space-y-2 text-xs">
-                    <div className="flex items-center gap-2 text-[#2D2529]">
-                      <span className="material-symbols-outlined text-[#B75E78] text-[16px]">
+                  <div className="p-4 rounded-2xl bg-white border border-[#fbeaec] text-left space-y-2.5 text-xs font-['Quicksand'] font-bold">
+                    <div className="flex items-center gap-2 text-[#22191b]">
+                      <span className="material-symbols-outlined text-[#f48fb1] text-[18px]">
                         menu_book
                       </span>
                       <span>Structured Academic Curriculum</span>
                     </div>
-                    <div className="flex items-center gap-2 text-[#2D2529]">
-                      <span className="material-symbols-outlined text-[#B75E78] text-[16px]">
+                    <div className="flex items-center gap-2 text-[#22191b]">
+                      <span className="material-symbols-outlined text-[#81d4fa] text-[18px]">
                         category
                       </span>
                       <span>7 Approved Target Pathways</span>
                     </div>
-                    <div className="flex items-center gap-2 text-[#2D2529]">
-                      <span className="material-symbols-outlined text-[#B75E78] text-[16px]">
+                    <div className="flex items-center gap-2 text-[#22191b]">
+                      <span className="material-symbols-outlined text-[#a5d6a7] text-[18px]">
                         record_voice_over
                       </span>
                       <span>Instructor-Guided Speaking &amp; Listening</span>
@@ -292,14 +299,14 @@ export const PublicScreens: React.FC<PublicScreenProps> = ({
               </div>
               <div className="lg:col-span-7 space-y-5">
                 <div className="space-y-1">
-                  <span className="text-xs font-bold text-[#B75E78] uppercase tracking-wider">
+                  <span className="text-xs font-['Quicksand'] font-bold text-[#f48fb1] uppercase tracking-wider">
                     Platform Overview
                   </span>
-                  <h1 className="font-serif text-2xl lg:text-3xl text-[#2D2529]">
+                  <h1 className="font-['Quicksand'] font-bold text-2xl lg:text-3xl text-[#22191b]">
                     Clear, Structured English Learning for Practical Fluency.
                   </h1>
                 </div>
-                <p className="text-sm text-[#766A70] leading-relaxed">
+                <p className="text-sm text-[#534247] leading-relaxed">
                   Teacher Theint English is an educational platform dedicated to delivering
                   structured English language courses. The curriculum focuses on building clear
                   grammar comprehension, natural pronunciation, and confident spoken communication
@@ -307,16 +314,16 @@ export const PublicScreens: React.FC<PublicScreenProps> = ({
                   English, Daily Conversation, Hotel English, and Interview English.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                  <div className="p-4 rounded-sm bg-[#FCFAF9] border border-[#E9DDE1]">
-                    <p className="text-xs font-bold text-[#2D2529]">One-on-One Feedback</p>
-                    <p className="text-xs text-[#766A70] mt-1">
+                  <div className="p-5 rounded-2xl bg-[#fff8f8] border border-[#fbeaec] shadow-2xs space-y-1">
+                    <p className="text-xs font-['Quicksand'] font-bold text-[#22191b]">One-on-One Feedback</p>
+                    <p className="text-xs text-[#534247] leading-relaxed">
                       Assignments and speaking practice receive structured evaluation from
                       instructors to guide individual progress.
                     </p>
                   </div>
-                  <div className="p-4 rounded-sm bg-[#FCFAF9] border border-[#E9DDE1]">
-                    <p className="text-xs font-bold text-[#2D2529]">Contextual Lessons</p>
-                    <p className="text-xs text-[#766A70] mt-1">
+                  <div className="p-5 rounded-2xl bg-[#fff8f8] border border-[#fbeaec] shadow-2xs space-y-1">
+                    <p className="text-xs font-['Quicksand'] font-bold text-[#22191b]">Contextual Lessons</p>
+                    <p className="text-xs text-[#534247] leading-relaxed">
                       Concepts are taught through relevant situations and applied drills rather than
                       abstract lists.
                     </p>

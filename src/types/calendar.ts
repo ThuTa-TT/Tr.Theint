@@ -1,0 +1,443 @@
+export type CalendarViewMode = 'month' | 'week' | 'day' | 'agenda';
+
+export type SessionType = 
+  | 'one_on_one'
+  | 'group_class'
+  | 'placement_interview'
+  | 'office_hours'
+  | 'faculty_meeting';
+
+export type SessionStatus = 
+  | 'scheduled'
+  | 'in_progress'
+  | 'completed'
+  | 'cancelled'
+  | 'rescheduled';
+
+export interface CalendarSession {
+  id: string;
+  title: string;
+  courseTitle?: string;
+  sessionType: SessionType;
+  status: SessionStatus;
+  // ISO date strings or YYYY-MM-DD format
+  date: string; // e.g. '2026-10-08'
+  startTime: string; // e.g. '09:00'
+  endTime: string; // e.g. '10:00'
+  timeDisplay: string; // e.g. '9:00 AM – 10:00 AM MMT'
+  
+  // Teacher attribution
+  teacherId: string;
+  teacherName: string;
+  teacherAvatar: string;
+  teacherRole: string; // e.g. 'Lead Academic Instructor'
+
+  // Student / Cohort attribution
+  isOneOnOne: boolean;
+  studentName?: string;
+  studentAvatar?: string;
+  studentLevel?: string; // e.g. 'CEFR B2 Target'
+  studentEmail?: string;
+  cohortName?: string; // e.g. 'Cohort 14 (Batch A)'
+  attendeeCount?: number; // e.g. 18
+
+  // Room & Academic details
+  meetingRoomId: string;
+  meetingLink: string;
+  lessonTopic: string;
+  academicObjective: string;
+  materialsUrl?: string;
+  hasHomeworkAssigned: boolean;
+  
+  // Admin operational fields
+  classroomNumber: string; // e.g. 'Virtual Suite #03'
+  conflictWarning?: string;
+  isFlaggedForReview?: boolean;
+  lastModifiedBy?: string;
+}
+
+export interface TeacherAvailabilitySlot {
+  id: string;
+  teacherId: string;
+  teacherName: string;
+  dayOfWeek: number; // 0 = Sunday, 1 = Monday, ... 6 = Saturday
+  startTime: string;
+  endTime: string;
+  slotType: 'regular_teaching' | 'office_hours' | 'break' | 'unavailable';
+}
+
+export const INITIAL_CALENDAR_SESSIONS: CalendarSession[] = [
+  {
+    id: 'SES-001A',
+    title: '1-on-1 Morning Academic Consultation: IELTS Writing Task 2 Diagnostics',
+    courseTitle: 'One-on-One VIP Mentorship',
+    sessionType: 'one_on_one',
+    status: 'scheduled',
+    date: '2026-10-08',
+    startTime: '09:00',
+    endTime: '10:00',
+    timeDisplay: '9:00 AM – 10:00 AM MMT',
+    teacherId: 'TCH-001',
+    teacherName: 'Teacher Theint',
+    teacherAvatar: 'TT',
+    teacherRole: 'Lead Academic Founder',
+    isOneOnOne: true,
+    studentName: 'Ma Ei Shwe Sin',
+    studentAvatar: 'ES',
+    studentLevel: 'CEFR B2 → Target IELTS 7.5',
+    studentEmail: 'eishwessin@example.com',
+    meetingRoomId: 'ROOM-1ON1-ES01',
+    meetingLink: 'https://classroom.teachertheint.edu.mm/room/1on1-es01',
+    lessonTopic: 'Task 2 Brainstorming Architecture & Question Types Triage',
+    academicObjective: 'Formulate nuanced thesis statements for discussion vs opinion prompts.',
+    materialsUrl: 'Task2-Essay-Formulations.pdf',
+    hasHomeworkAssigned: true,
+    classroomNumber: 'Private Mentorship Salon A',
+  },
+  {
+    id: 'SES-001B',
+    title: 'Academic Vocabulary Masterclass: High-Utility C1 Collocations',
+    courseTitle: 'Advanced Lexical Resource Series',
+    sessionType: 'group_class',
+    status: 'scheduled',
+    date: '2026-10-08',
+    startTime: '11:00',
+    endTime: '12:15',
+    timeDisplay: '11:00 AM – 12:15 PM MMT',
+    teacherId: 'TCH-002',
+    teacherName: 'Sayar Aung Myint',
+    teacherAvatar: 'AM',
+    teacherRole: 'Senior Fluency Instructor',
+    isOneOnOne: false,
+    cohortName: 'Cohort 12 (Lexical)',
+    attendeeCount: 22,
+    meetingRoomId: 'ROOM-LEX-12',
+    meetingLink: 'https://classroom.teachertheint.edu.mm/room/lex-12',
+    lessonTopic: 'De-lexicalized verbs and abstract academic noun collocations',
+    academicObjective: 'Replace basic phrases with academic verb-noun pairings.',
+    materialsUrl: 'C1-Collocation-Glossary.pdf',
+    hasHomeworkAssigned: false,
+    classroomNumber: 'Virtual Suite #02',
+  },
+  {
+    id: 'SES-001C',
+    title: '1-on-1 VIP Pronunciation & Accent Clarification Drills',
+    courseTitle: 'One-on-One VIP Mentorship',
+    sessionType: 'one_on_one',
+    status: 'scheduled',
+    date: '2026-10-08',
+    startTime: '14:00',
+    endTime: '15:00',
+    timeDisplay: '2:00 PM – 3:00 PM MMT',
+    teacherId: 'TCH-001',
+    teacherName: 'Teacher Theint',
+    teacherAvatar: 'TT',
+    teacherRole: 'Lead Academic Founder',
+    isOneOnOne: true,
+    studentName: 'Ko Zaw Min Thu',
+    studentAvatar: 'ZT',
+    studentLevel: 'CEFR B1+ → Target B2 Fluency',
+    studentEmail: 'zawminthu@example.com',
+    meetingRoomId: 'ROOM-1ON1-ZT03',
+    meetingLink: 'https://classroom.teachertheint.edu.mm/room/1on1-zt03',
+    lessonTopic: 'Connected Speech: Elision, Assimilation & Intonation Contours',
+    academicObjective: 'Eliminate jerky speech patterns and improve listener ease.',
+    materialsUrl: 'Intonation-Contours-Drill3.pdf',
+    hasHomeworkAssigned: true,
+    classroomNumber: 'Private Mentorship Salon B',
+  },
+  {
+    id: 'SES-002',
+    title: '1-on-1 Personalized Mentorship: Diagnostic Writing Debrief',
+    courseTitle: 'One-on-One VIP Mentorship',
+    sessionType: 'one_on_one',
+    status: 'scheduled',
+    date: '2026-10-08',
+    startTime: '16:00',
+    endTime: '17:00',
+    timeDisplay: '4:00 PM – 5:00 PM MMT',
+    teacherId: 'TCH-001',
+    teacherName: 'Teacher Theint',
+    teacherAvatar: 'TT',
+    teacherRole: 'Lead Academic Founder',
+    isOneOnOne: true,
+    studentName: 'Ko Kyaw Swar Min',
+    studentAvatar: 'KS',
+    studentLevel: 'CEFR B2 → Target IELTS 7.0',
+    studentEmail: 'kyawswar.min@example.com',
+    meetingRoomId: 'ROOM-1ON1-KS01',
+    meetingLink: 'https://classroom.teachertheint.edu.mm/room/1on1-ks01',
+    lessonTopic: 'Diagnostic Essay #3 Line-by-Line Lexical Resource Feedback',
+    academicObjective: 'Remediate recurring prepositional collocations and passive voice overgeneralization.',
+    materialsUrl: 'KyawSwar-Diagnostic-Essay3-Annotated.pdf',
+    hasHomeworkAssigned: true,
+    classroomNumber: 'Private Mentorship Salon A',
+  },
+  {
+    id: 'SES-001',
+    title: 'IELTS Band 7.5+ Writing Clinic: Advanced Paragraph Architecture',
+    courseTitle: 'IELTS Academic Writing Intensive',
+    sessionType: 'group_class',
+    status: 'scheduled',
+    date: '2026-10-08',
+    startTime: '19:00',
+    endTime: '20:30',
+    timeDisplay: '7:00 PM – 8:30 PM MMT',
+    teacherId: 'TCH-001',
+    teacherName: 'Teacher Theint',
+    teacherAvatar: 'TT',
+    teacherRole: 'Lead Academic Founder',
+    isOneOnOne: false,
+    cohortName: 'Cohort 14 (Batch A)',
+    attendeeCount: 18,
+    meetingRoomId: 'ROOM-IELTS-75',
+    meetingLink: 'https://classroom.teachertheint.edu.mm/room/ielts-75',
+    lessonTopic: 'Cohesive Devices & Syntactic Mitigation Markers',
+    academicObjective: 'Master Band 8 sentence inversion and concessive clauses in Task 2 argument essays.',
+    materialsUrl: 'Lesson-14-Handout-Task2.pdf',
+    hasHomeworkAssigned: true,
+    classroomNumber: 'Virtual Suite #01 (HD Audio)',
+  },
+  {
+    id: 'SES-001D',
+    title: '1-on-1 Late Evening Office Hours: Speaking Mock Part 2 & Feedback',
+    courseTitle: 'One-on-One VIP Mentorship',
+    sessionType: 'office_hours',
+    status: 'scheduled',
+    date: '2026-10-08',
+    startTime: '21:00',
+    endTime: '21:45',
+    timeDisplay: '9:00 PM – 9:45 PM MMT',
+    teacherId: 'TCH-001',
+    teacherName: 'Teacher Theint',
+    teacherAvatar: 'TT',
+    teacherRole: 'Lead Academic Founder',
+    isOneOnOne: true,
+    studentName: 'Ma Thiri San',
+    studentAvatar: 'TS',
+    studentLevel: 'CEFR B2 Target',
+    studentEmail: 'thirisan@example.com',
+    meetingRoomId: 'ROOM-1ON1-TS09',
+    meetingLink: 'https://classroom.teachertheint.edu.mm/room/1on1-ts09',
+    lessonTopic: 'Part 2 Long Turn Cue Card Flow & Structure',
+    academicObjective: 'Sustain uninterrupted discourse for 2 full minutes without circular repetition.',
+    materialsUrl: 'Speaking-Cue-Cards-Oct2026.pdf',
+    hasHomeworkAssigned: false,
+    classroomNumber: 'Office Hours Salon #1',
+  },
+  {
+    id: 'SES-003',
+    title: 'Practical Speaking Essentials: Natural Turn-Taking Drills',
+    courseTitle: 'Everyday Spoken English & Fluency',
+    sessionType: 'group_class',
+    status: 'scheduled',
+    date: '2026-10-09',
+    startTime: '20:00',
+    endTime: '21:15',
+    timeDisplay: '8:00 PM – 9:15 PM MMT',
+    teacherId: 'TCH-002',
+    teacherName: 'Sayar Aung Myint',
+    teacherAvatar: 'AM',
+    teacherRole: 'Senior Fluency Instructor',
+    isOneOnOne: false,
+    cohortName: 'Spoken Cohort 08',
+    attendeeCount: 24,
+    meetingRoomId: 'ROOM-SPEAK-08',
+    meetingLink: 'https://classroom.teachertheint.edu.mm/room/speak-08',
+    lessonTopic: 'Small-Group Breakout Rooms: Diplomatic Mitigation & Casual Idioms',
+    academicObjective: 'Overcome hesitation pauses when responding to unexpected conversational prompts.',
+    materialsUrl: 'Breakout-Prompts-Unit-8.pdf',
+    hasHomeworkAssigned: false,
+    classroomNumber: 'Virtual Suite #02',
+  },
+  {
+    id: 'SES-004',
+    title: '1-on-1 Office Hours: Pronunciation & Acoustic Phonetics Clinic',
+    courseTitle: 'One-on-One VIP Mentorship',
+    sessionType: 'office_hours',
+    status: 'scheduled',
+    date: '2026-10-09',
+    startTime: '14:30',
+    endTime: '15:15',
+    timeDisplay: '2:30 PM – 3:15 PM MMT',
+    teacherId: 'TCH-001',
+    teacherName: 'Teacher Theint',
+    teacherAvatar: 'TT',
+    teacherRole: 'Lead Academic Founder',
+    isOneOnOne: true,
+    studentName: 'Ma Phyu Phyu Thin',
+    studentAvatar: 'PT',
+    studentLevel: 'CEFR B1 → Target B2',
+    studentEmail: 'phyuphyu.thin@example.com',
+    meetingRoomId: 'ROOM-1ON1-PT02',
+    meetingLink: 'https://classroom.teachertheint.edu.mm/room/1on1-pt02',
+    lessonTopic: 'Vowel Length Disambiguation & Schwa Reduction',
+    academicObjective: 'Eliminate Mother Tongue Influence (MTI) on terminal consonant clusters.',
+    materialsUrl: 'IPA-Acoustic-Vowel-Chart-Drills.pdf',
+    hasHomeworkAssigned: true,
+    classroomNumber: 'Private Mentorship Salon B',
+  },
+  {
+    id: 'SES-005',
+    title: 'Grammar Foundations: Compound-Complex Sentence Synthesis',
+    courseTitle: 'Essential English Grammar Mastery',
+    sessionType: 'group_class',
+    status: 'scheduled',
+    date: '2026-10-10',
+    startTime: '10:00',
+    endTime: '11:30',
+    timeDisplay: '10:00 AM – 11:30 AM MMT',
+    teacherId: 'TCH-003',
+    teacherName: 'Sayarma Hnin Thida',
+    teacherAvatar: 'HT',
+    teacherRole: 'Grammar & Syntax Specialist',
+    isOneOnOne: false,
+    cohortName: 'Grammar Foundation Cohort 22',
+    attendeeCount: 32,
+    meetingRoomId: 'ROOM-GRAM-22',
+    meetingLink: 'https://classroom.teachertheint.edu.mm/room/gram-22',
+    lessonTopic: 'Subordinating Conjunctions vs Relative Adverbs',
+    academicObjective: 'Students synthesize 10 compound-complex sentences with zero comma splice errors.',
+    materialsUrl: 'Grammar-Module-3-Worksheet.pdf',
+    hasHomeworkAssigned: true,
+    classroomNumber: 'Virtual Suite #03',
+  },
+  {
+    id: 'SES-006',
+    title: '1-on-1 Scheduled Mentorship: Business Negotiation Roleplay',
+    courseTitle: 'Executive English & Workplace Communication',
+    sessionType: 'one_on_one',
+    status: 'scheduled',
+    date: '2026-10-10',
+    startTime: '15:00',
+    endTime: '16:00',
+    timeDisplay: '3:00 PM – 4:00 PM MMT',
+    teacherId: 'TCH-001',
+    teacherName: 'Teacher Theint',
+    teacherAvatar: 'TT',
+    teacherRole: 'Lead Academic Founder',
+    isOneOnOne: true,
+    studentName: 'Ko Min Thant',
+    studentAvatar: 'MT',
+    studentLevel: 'Executive Level (CEFR C1 Preparation)',
+    studentEmail: 'minthant.director@example.com',
+    meetingRoomId: 'ROOM-1ON1-MT05',
+    meetingLink: 'https://classroom.teachertheint.edu.mm/room/1on1-mt05',
+    lessonTopic: 'High-Stakes Contract Negotiation & Counter-Proposal Phrases',
+    academicObjective: 'Deliver assertive counter-proposals with diplomatic tone modulation.',
+    materialsUrl: 'Executive-CaseStudy-MergerNegotiation.pdf',
+    hasHomeworkAssigned: true,
+    classroomNumber: 'Executive Mentorship Suite A',
+  },
+  {
+    id: 'SES-007',
+    title: 'Weekly Academic Faculty Alignment & Curriculum Moderation',
+    courseTitle: 'Faculty Operations',
+    sessionType: 'faculty_meeting',
+    status: 'scheduled',
+    date: '2026-10-11',
+    startTime: '09:00',
+    endTime: '10:30',
+    timeDisplay: '9:00 AM – 10:30 AM MMT',
+    teacherId: 'TCH-001',
+    teacherName: 'Teacher Theint',
+    teacherAvatar: 'TT',
+    teacherRole: 'Lead Academic Founder',
+    isOneOnOne: false,
+    cohortName: 'All Teaching Faculty (4 Instructors)',
+    attendeeCount: 6,
+    meetingRoomId: 'FACULTY-BOARDROOM',
+    meetingLink: 'https://classroom.teachertheint.edu.mm/room/faculty-board',
+    lessonTopic: 'Q4 IELTS Rubric Calibration & Diagnostic Placement Benchmarks',
+    academicObjective: 'Review student essay inter-rater reliability scores across all grading queues.',
+    materialsUrl: 'Faculty-Grading-Rubrics-v2.pdf',
+    hasHomeworkAssigned: false,
+    classroomNumber: 'Faculty Boardroom Virtual',
+  },
+  {
+    id: 'SES-008',
+    title: '1-on-1 Mock Speaking Diagnostic (Pre-Test Evaluation)',
+    courseTitle: 'One-on-One VIP Mentorship',
+    sessionType: 'placement_interview',
+    status: 'scheduled',
+    date: '2026-10-12',
+    startTime: '11:00',
+    endTime: '11:45',
+    timeDisplay: '11:00 AM – 11:45 AM MMT',
+    teacherId: 'TCH-002',
+    teacherName: 'Sayar Aung Myint',
+    teacherAvatar: 'AM',
+    teacherRole: 'Senior Fluency Instructor',
+    isOneOnOne: true,
+    studentName: 'Ma Su Mon Win',
+    studentAvatar: 'SM',
+    studentLevel: 'CEFR A2 → Diagnosing B1 Readiness',
+    studentEmail: 'sumon.win@example.com',
+    meetingRoomId: 'ROOM-1ON1-SM01',
+    meetingLink: 'https://classroom.teachertheint.edu.mm/room/1on1-sm01',
+    lessonTopic: 'Full 3-Part Speaking Simulation with Audio Recording',
+    academicObjective: 'Produce baseline diagnostic score across Fluency, Lexical, Grammar, and Pronunciation.',
+    materialsUrl: 'Speaking-Diagnostic-Form-SM.pdf',
+    hasHomeworkAssigned: false,
+    classroomNumber: 'Diagnostic Lab Suite',
+  },
+  {
+    id: 'SES-009',
+    title: 'Academic Writing Task 1: Data Synthesis & Trend Reporting',
+    courseTitle: 'IELTS Academic Writing Intensive',
+    sessionType: 'group_class',
+    status: 'scheduled',
+    date: '2026-10-13',
+    startTime: '19:00',
+    endTime: '20:30',
+    timeDisplay: '7:00 PM – 8:30 PM MMT',
+    teacherId: 'TCH-001',
+    teacherName: 'Teacher Theint',
+    teacherAvatar: 'TT',
+    teacherRole: 'Lead Academic Founder',
+    isOneOnOne: false,
+    cohortName: 'Cohort 14 (Batch A)',
+    attendeeCount: 18,
+    meetingRoomId: 'ROOM-IELTS-75',
+    meetingLink: 'https://classroom.teachertheint.edu.mm/room/ielts-75',
+    lessonTopic: 'Pie Charts, Tables, and Multi-Graph Overview Formulation',
+    academicObjective: 'Master writing the crucial Overview paragraph without referencing specific data numbers.',
+    materialsUrl: 'Task1-Data-Visuals-BatchA.pdf',
+    hasHomeworkAssigned: true,
+    classroomNumber: 'Virtual Suite #01 (HD Audio)',
+  },
+  {
+    id: 'SES-010',
+    title: '1-on-1 Scheduled Mentorship: Medical English & Case Presentation',
+    courseTitle: 'One-on-One VIP Mentorship',
+    sessionType: 'one_on_one',
+    status: 'scheduled',
+    date: '2026-10-14',
+    startTime: '17:00',
+    endTime: '18:00',
+    timeDisplay: '5:00 PM – 6:00 PM MMT',
+    teacherId: 'TCH-001',
+    teacherName: 'Teacher Theint',
+    teacherAvatar: 'TT',
+    teacherRole: 'Lead Academic Founder',
+    isOneOnOne: true,
+    studentName: 'Dr. Thet Naing Oo',
+    studentAvatar: 'TN',
+    studentLevel: 'OET Preparation / Clinical CEFR B2+',
+    studentEmail: 'thetnaing.dr@example.com',
+    meetingRoomId: 'ROOM-1ON1-TN03',
+    meetingLink: 'https://classroom.teachertheint.edu.mm/room/1on1-tn03',
+    lessonTopic: 'Patient Consultation Empathy Markers & Clinical Handover Speech',
+    academicObjective: 'Refine bedside manner terminology and succinct SBAR clinical communication.',
+    materialsUrl: 'OET-Clinical-Roleplay-Cards.pdf',
+    hasHomeworkAssigned: true,
+    classroomNumber: 'Private Mentorship Salon A',
+  },
+];
+
+export const ALL_TEACHERS = [
+  { id: 'TCH-ALL', name: 'All Teachers (Global View)', avatar: 'ALL', role: 'Faculty Roster' },
+  { id: 'TCH-001', name: 'Teacher Theint', avatar: 'TT', role: 'Lead Academic Founder' },
+  { id: 'TCH-002', name: 'Sayar Aung Myint', avatar: 'AM', role: 'Senior Fluency Instructor' },
+  { id: 'TCH-003', name: 'Sayarma Hnin Thida', avatar: 'HT', role: 'Grammar & Syntax Specialist' },
+];
